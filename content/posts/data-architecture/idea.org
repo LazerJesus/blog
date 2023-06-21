@@ -1,0 +1,157 @@
+Article Outline:
+
+1. Introduction
+   - Overview of the presentation series
+   - Goal: provide a realistic understanding of the 5S data processing model and its applications
+   - Importance of collaboration between data teams and other teams
+
+2. The 5S Data Architecture Model
+   - Data is everywhere and needs to be accessed regularly and reliably
+   - Shaping data based on the required format and structure
+   - Extracting useful work from the data
+
+3. Examples of Data Sources
+   - HubSpot: Channel, growth, leads, companies, and sales funnel information
+   - Sales activities: Phone calls, emails, and other direct communication
+   - User behavior data: Clicks, button presses, project creations, sign-ups, etc.
+   - Product data: Loading times, crashes, releases, etc.
+
+4. The 5S Data Processing Model in Practice
+   - Accessing and shaping data from various sources
+   - Combining and reducing data to a usable format
+   - Utilizing tools to consume and analyze the data
+
+5. Future Presentations
+   - Upcoming topics: Mechanics of the 5S model, future developments and improvements, new data products
+   - Emphasizing the importance of understanding and applying the 5S data processing model
+
+6. Conclusion
+   - Encouraging collaboration between teams and data experts
+   - Acknowledgment of the supporting role of the data team
+   - Preparing for the next presentations in the series
+
+
+
+7. Handling Diverse Data Sources
+   - User behavior data
+     - Various products and platforms generating data (e.g., clicks, sign-ups, button presses, project creations)
+   - Product data
+     - Loading times, crashes, releases, and other product-related information
+   - Spreadsheets as a temporary solution
+     - Financial data, marketing spend, and other metrics stored in spreadsheets for quick access
+   - Third-party tools and integrations
+     - Zendesk, Typeform, and Trello enhancing data collection and analysis
+
+8. Accessing and Storing Data
+   - Challenges: Data scattered across different platforms, not readily usable
+   - Solutions: Extraction, transportation, and storage of data to centralize and make it accessible
+   - Example: Extracting data from HubSpot
+     - Using a GET request to retrieve contact information
+     - Storing data in a universal data format using Singer
+     - Dealing with incremental updates and tracking changes
+   - Storage: Leveraging BigQuery for centralized data storage
+
+9. Tracking and Loading Data Incrementally
+   - Importance of loading only new and updated data
+   - Keeping track of last contact loaded and the number of new contacts
+   - Avoid extraction of entire dataset every time by focusing on changes
+
+10. Storage and Control with BigQuery
+   - Storing extracted data from HubSpot
+   - Centralizing and controlling data storage in BigQuery
+
+11. Scheduling and Monitoring with Airflow
+   - Continuous and timely data extraction using Airflow
+   - Ensuring tasks are completed successfully or rerun as needed
+   - Customizable task scheduling and frequency
+   - Integrating data tests with tools like Great Expectations
+
+12. Ensuring Data Reliability
+   - Testing data during processing and after loading
+   - Inspection and validation of key assumptions about the data
+   - Example: most recent account data should be no older than one day
+   - Range of assumptions: first data instance, the presence of specific entries (e.g., co-founder user)
+
+13. Implementing Data Quality Checks
+   - Creating code-based checks to ensure data validity
+   - Specifying assumptions about how recent the data should be
+   - Checking for essential data entries and their characteristics
+
+14. Ensuring Data Accuracy and Completeness
+   - Data assumptions: recent data no older than one day, first data instances for specific years, presence of known entries (e.g., co-founder user)
+   - Relationships between tables: ensuring consistency between connected data (e.g., deals and accounts)
+   - Monitoring data quality using tools like Airflow
+
+15. Data Shaping: The Crux of the Process
+   - Transforming raw data into usable insights
+   - Comparing the process to refining oil: extraction, transportation, storage, and processing to remove impurities
+
+16. Data Transformation Example: HubSpot Deal Data
+   - Associating owner and qualifier information with each deal
+      - Deal owner from the sales team
+      - Qualifier from the PR team
+   - Providing additional context and insights for deal analysis
+   - Addressing special cases, such as team members transitioning between roles (e.g., Marco)
+
+By examining these steps, we can see the importance of ensuring data accuracy and completeness and the crucial role that data shaping and transformation play in the process.
+
+
+
+17. Dealing with Special Cases: Marco
+   - Marco's transition between roles in the company (qualifier to owner)
+   - Adjusting data to account for unique situations
+
+18. Introduction to DBT
+   - Overview of DBT's capabilities 
+   - Transforming and combining data tables
+
+19. The Five Stages of Data Processing in DBT
+   a) Storage: Raw data from various sources collected in one place
+   b) Sourcing: Selecting data needed from storage area
+   c) Staging: Standardizing naming conventions and schema
+   d) Shaping: Manipulating data (e.g., calculating render events for each project)
+   e) Surface: Providing data to users and tools
+
+20. Data Open Office Hours
+   - Forum for collaboration and assisting others with data questions or concerns
+   - Continuously improving data infrastructure
+
+21. Metabase and Custom Tools
+   - Analyzing data insights and building dashboards
+   - Developing tools to interact with data infrastructure
+
+22. Performance Metrics and Trends
+   - Conversion rates, user activity, contact lifecycle, channel data
+   - Identifying successful channels and strategies
+   - Insights on product usability and user behavior
+
+23. Future Improvements
+   - Expectations for a new render engine and its impact on user experience
+   - Encouraging participation in Data Open Office Hours for continuous growth and development
+  
+24. Open Office Hours and Continuous Improvement
+   - Benefits of Open Office Hours: addressing questions, providing insights, refining definitions, and adjusting criteria
+   - Encouraging participation in ongoing conversations for continuous learning and growth
+
+25. Addressing Data Discrepancies and Definition Clarity
+   - Significance of having clear and accurate definitions (e.g., SQL vs. MQL)
+   - Ensuring diligence in data criteria, informing the right metrics and insights
+
+26. Scrapping External Channels as Data Sources
+   - Possibility of using external channels such as LinkedIn for data analysis
+   - Challenges: building or buying tools for data extraction and analysis
+   - Considerations for prioritizing data sources (e.g., low-hanging fruit vs. long-term investment)
+
+27. Data Exists Everywhere (Even in Unlikely Places)
+   - Acknowledging the presence of untapped resources
+   - Encouraging data exploration to unearth and capitalize on hidden data opportunities
+
+28. National Symbols and Encouragement
+   - Lighthearted reference to Canadian national symbols: the beaver, snowy owl
+   - Geographic resource distribution and exploration
+
+29. Open Floor for Additional Questions and Discussion
+   - Inviting team members to ask further questions or provide insights
+   - Encouraging a collaborative environment and enhancing data infrastructure based on feedback, new ideas, and perspectives
+
+In this section, the focus was on continuous improvement through open office hours, addressing discrepancies or definition-related concerns, and exploring new data sources. The importance of collaboration and ongoing conversation in enhancing data infrastructure was emphasized.
