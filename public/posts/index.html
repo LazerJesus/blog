@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='hi ipsum dolor sit amet, consectetur adipiscing elit.'>
 <title>Posts</title>
 
 <link rel='canonical' href='https://finnfrotscher.com/posts/'>
 
-<link rel="stylesheet" href="/scss/style.min.d95650e686f1a0f2491306dcbe17a38db91aa31cea5455b303a4a1313e3d8df2.css"><meta property='og:title' content='Posts'>
-<meta property='og:description' content='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'>
+<link rel="stylesheet" href="/scss/style.min.76cb572dc1ef6310faf6c0e067586382ceedfcf674bb592cd57e2c889e2bb78f.css"><meta property='og:title' content='Posts'>
+<meta property='og:description' content='hi ipsum dolor sit amet, consectetur adipiscing elit.'>
 <meta property='og:url' content='https://finnfrotscher.com/posts/'>
 <meta property='og:site_name' content='Finn Luca Frotscher'>
 <meta property='og:type' content='website'><meta property='og:updated_time' content=' 2022-07-13T00:00:00&#43;02:00 '/>
 <meta name="twitter:title" content="Posts">
-<meta name="twitter:description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit."><link rel="alternate" type="application/rss&#43;xml" href="https://finnfrotscher.com/posts/index.xml">
+<meta name="twitter:description" content="hi ipsum dolor sit amet, consectetur adipiscing elit."><link rel="alternate" type="application/rss&#43;xml" href="https://finnfrotscher.com/posts/index.xml">
     </head>
     <body class="">
     <script>
@@ -54,7 +54,7 @@
                     
                     
                         
-                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                        <img src="/img/finnfrotscher_hu2287fabf70dbc89b788f757b85799f0f_249353_300x0_resize_box_3.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -66,7 +66,7 @@
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Finn Luca Frotscher</a></h1>
-            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+            <h2 class="site-description">hi ipsum dolor sit amet, consectetur adipiscing elit.</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -92,60 +92,59 @@
             
         </ol>
 <script>
-    function validateEmail(email) {
-	var re =
-	    /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-	return re.test(email);
-    }
+  function validateEmail(email) {
+      var re =
+	  /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+      return re.test(email);
+  }
 
-    function submitForm(e) {
-	e.preventDefault();
-	var emailInput = document.getElementById("emailInput").value;
+  function submitForm(e) {
+      e.preventDefault();
+      var emailInput = document.getElementById("emailInput");
+      var inputBaseStyle = "0px";
+      emailInput.style.border = "2px solid lightgrey";
 
-	if (!validateEmail(emailInput)) {
-	    alert("Invalid email address");
-	    return false;
-	}
-	var data = { email: emailInput };
+      var email = emailInput.value;
+      if (!validateEmail(email)) {
+	  alert("Invalid email address");
+	  return false;
+      }
+      var data = { email };
 
 
-	var url = "https://jqcgbzfcauvaabptdcvc.supabase.co/functions/v1/mailing-list-add-by-form-submit"
-	    
+      var url = "https://jqcgbzfcauvaabptdcvc.supabase.co/functions/v1/mailing-list-add-by-form-submit"
 
-	var TOKEN =
-	    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpxY2diemZjYXV2YWFicHRkY3ZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTAxMDcwODgsImV4cCI6MjAwNTY4MzA4OH0.QbPYEDM74rPlxAEQ4OapKqYPvWTStZuGCzpX3g7gUT4"
-	    
+      var TOKEN =
+	  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpxY2diemZjYXV2YWFicHRkY3ZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTAxMDcwODgsImV4cCI6MjAwNTY4MzA4OH0.QbPYEDM74rPlxAEQ4OapKqYPvWTStZuGCzpX3g7gUT4"
 
-	function changeColor(color = "darkseagreen") {
-	    var input = document.getElementById("emailInput");
-	    var currentColor = input.style.border;
-	    input.style.border = "2px solid " + color;
-	    setTimeout(function () {
-		input.style.border = currentColor;
-	    }, 3000);
-	}
+      function changeColor(color = "darkseagreen") {
+	  emailInput.style.border = "2px solid " + color;
+	  setTimeout(function () {
+	      emailInput.style.border = inputBaseStyle;
+	  }, 3000);
+      }
 
-	fetch(url, {
-	    method: "POST",
-	    headers: {
-		Authorization: TOKEN,
-		"Content-Type": "application/json",
-	    },
-	    body: JSON.stringify(data),
-	}).then(async (response) => {
-	    console.log("result", response);
-	    if (response.status == 200 || response.status == 201) {
-		changeColor("darkseagreen");
-	    } else {
-		changeColor("lightcoral");
-	    }
+      fetch(url, {
+	  method: "POST",
+	  headers: {
+	      Authorization: TOKEN,
+	      "Content-Type": "application/json",
+	  },
+	  body: JSON.stringify(data),
+      }).then(async (response) => {
+	  console.log("result", response);
+	  if (response.status == 200 || response.status == 201) {
+	      changeColor("darkseagreen");
+	  } else {
+	      changeColor("lightcoral");
+	  }
 
-	    response.text().then((data) => {
-		console.log("Data", data);
-	    })
+	  response.text().then((data) => {
+	      console.log("Data", data);
+	  })
 
-	});
-    }
+      });
+  }
 </script>
 
 
@@ -266,12 +265,12 @@
     <section class="copyright">
         &copy; 
         
-        3036 Finn Luca Frotscher
+        2023 Finn Luca Frotscher
     </section>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
