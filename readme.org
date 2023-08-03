@@ -1,0 +1,7 @@
+
+call function with:
+
+curl -i --location --request POST 'http://localhost:54321/functions/v1/mailing-list-add-by-form-submit' \
+<ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0' \
+>   --header 'Content-Type: application/json' \
+>   --data '{"name":"Functions"}'

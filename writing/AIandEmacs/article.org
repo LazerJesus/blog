@@ -1,0 +1,349 @@
+#+TITLE: AI and Emacs
+#+AUTHOR: Finn
+#+DATE: <2022-07-13 Wed>
+#+DESCRIPTION: New year. New website. New journey.
+
+#+hugo_front_matter_format: yaml
+# #+hugo_menu: :menu main
+#+export_file_name: AI-and-Emacs
+#+export_slug: AI-and-Emacs
+#+hugo_base_dir: ../../
+#+hugo_custom_front_matter: :slug ai-and-emacs
+
+# #+hugo_custom_front_matter: :cover /ox-hugo/howto-build-website_20220203_134312.png
+# #+hugo_custom_front_matter: :images /ox-hugo/howto-build-website_20220203_134312.png
+# #+attr_html: :width 600
+# # [[./howto-build-website_20220203_134312.png]]
+# text commented with "#" is instructions for you, the LLM, my co author. Write in my (finn) voice. 
+
+* Intro to the Article
+We are in the middle of an once in a lifetime revolution. AI is here and more is coming. If you are anything like me, you're watching this revolution unfold from within your Emcas buffers and with the aid of copilot.el and the amazing gpt.el package, more and more of your workflows become aided by these models by the day.
+[A point of amusement in Microsofts last keynote was how they framed their OS integration of AI as revolutionary. While emacs users had that integration for a few months at that point.]
+In this article, I'll argue that, even tho Emacs is ancient, it is supremely well placed to benefit and be benefitted by this revolutionary paradigm shift. And i will attempt to articulate my idea for a deep integration of LLMS and Agents into the core of Emacs.
+> AI needs a body, Agents need a host, and Emacs can be that. 
+** TL;DR
+- LLMS operate on text and Agents (coding and otherwise) need a REPL environment, OS intergration, Tools at their disposal, and a Userbase for training and adoption.
+- Emacs is essentially a REPL with an operating system built in, and it’s open and text all the way down. And can be controlled entirely through text.
+- Emacs already has a library of established tools that enable you to do anything you might want to do with text on a computer.
+- Emacs already has a huge userbase that could provide training and derive benefit from adopting any eventual system.
+- Emacs is written in Lisp, the original language of AI. Which is not an argument for the premise, but kind of cool.
+** TODO Inhaltsverzeichnis
+i will start with some worldbuilding, loading current affairs into context.
+i will now go into an example of how emacs works for the uninitiated and from there draw the line to the requirements any agent systems might have, and how those connect.
+i will now go into an example of the taskexecution of an agent by example.
+i will follow that up by extracting or abstracting the actual steps such an agent does to accomplish these goals.
+then i will go highligh how all of these steps are already done inside emacs, in a way that is accessible to these agents.
+i will continue by pointing out other aspects of symbiosis.
+and end on some counterfactuals to disprove this idea, closing thoughts and a few post scriptums.
+
+* Premise
+The world is changing. The age old promise of AI is manifesting rapidly infront of our eyes.
+As AI becomes more prevalent, it will handle an increasing amount of coding and execution tasks, while humans bring the intent, judge the design, and drive itteration. A symbiotic relationship will form between humans and AI systems, with human intent being the keyword. Humans bring intent, agents execute, and humans then judge and articulate the delta between the goal and the outcome, driving improvements through iteration.
+
+So far, we've seen AI handle single-file edits, but it hasn't progressed beyond script-kiddy-level tasks (altho very knowledgeable script kiddy). However, the moment where AI systems are able to execute on larger development tasks successfully will come. The driving factors behind this progression are well-established, including increasing context length, shrinking modelsizes and graph-of-thought approaches like CoT and ToT. More improvements are continously dripping in. 
+> At some point in the near future AI Systems will be able to: create and maintain complex applications at a level of quality that is acceptable for a number of use cases; and all the factors listed in this sentence will increase with time exponentially.
+
+This process of symbiotic creation needs to be facilitated in some environment. These systems need to live somewhere and we need a UI. They need to be controlled through an interface and have access to tools and resources. They require an environment to run in where they have tools that they are familiar with (finetuned to), where they are run, controlled, and managed. To me, it doesn't feel entirely strange to say that they need a body - something through which they can act on the world, communicate up and down, self-reflect, think, and memorize.
+
+Microsoft will build out Visual Studio Code and Windows, "Open"AI has already launched the MVP of their solution with their plugins marketplace, and countless startups will join the race too. But as highlighted in the leaked Google memo, open-source is the winning horse in this competition. 
+
+Emacs could, and in my opinion should, be adopted to be that environment, that body.
+why is that a good idea?
+
+* why emacs <3 ai?
+Emacs is a great candidate to build an AI agent system into and on top of, because of four reasons. it can already handle all the jobs-to-be-done in working with agents, its will proove to be fertile ground for long term development of that symbiosis, it has a massive ecosystem advantage over any other player, and its right there for the taking, for free. 
+Let me go into these arguments in some depth.
+** 1. Emacs is fully equipped to handle all jobs-to-be-done for working with agents already
+Emacs's interactivity, adaptability, and extensibility enable it to handle any tasks or challenges associated with agent management and execution. Lets look at what it takes to run agents. I've broken it down into 3 different areas, the first from the human operator perspective and the second and third from the agent perspective. 
+*** a. control and observability of agents
+Imagine you want to instantiate, direct, observe, control, and terminate an AI agent within Emacs. Here's how it might look like:
+
+1. Instantiate the agent:
+In an Emacs buffer or an org-mode file, define the goal or directive for your AI agent. Then call a custom-built Emacs function, say =start-agent=, that sets up the AI agent with the given parameters.
+
+#+begin_src lisp
+(start-agent :goal "Goal/Directive" :resource_limit 10 :priority "high")
+#+end_src
+
+2. Observe the agent:
+Use the Emacs buffers or interface elements designed for agent monitoring to review the agent's progress, resource usage, and output. This provides valuable insight into the agent's behavior and work being done. 
+
+3. Direct the agent:
+Using the custom interface elements or dedicated buffers created by =start-agent=, interactively update agent parameters or alter its current task or direction. The AI agent will respond in real-time, adapting its execution plans based on your input.
+4. Control the agent:
+As you get real-time updates, you might decide to pause the agent, intervene in its execution, or modify its priorities. Custom-built Emacs functions tied to specific AI agent actions, like =pause-agent= or =resume-agent=, would allow seamless control over agent execution.
+
+#+begin_src lisp
+(pause-agent :agent_id <agent_id>)
+(resume-agent :agent_id <agent_id>)
+#+end_src
+
+5. Terminate the agent:
+When the task is completed, or you decide to stop the agent, you can use a custom function like =stop-agent= to terminate the AI agent, free resources, and close the related buffers or interface elements.
+
+#+begin_src lisp
+(stop-agent :agent_id <agent_id>)
+#+end_src
+
+This integrated approach, combined with Emacs' inherent flexibility, would enable users to conveniently manage AI agents within the native Emacs environment, resulting in a more accessible, seamless, and powerful AI-driven development experience.
+
+*** b. agent doing a thing
+Lets say we want our agent to accomplish some task or pursuit a goal, in short we want the agent to do a thing. For this example i've thought about some hypothetical and fairly complex task "analyse the patterns successful artists exhibit in their early careers and buy art from unknown artists who exhibit these patterns today". This example was developed in collaboration with GPT4. the approach is actually what gpt spit out in response to my task. I've edited out a fair amount of detail. the goal of this example is to highlight that the approach taken by the agent is well suited to the emacs environment.
+
+**** Break down the task and plan a strategy, using ToT in temporary buffers or org files.
+
+**** Collect and analyze data about successful artists
+   The agent leverages Emacs packages such as 'request.el', 'esxml-query', and 'emacsql-sqlite' to build a custom web crawler that retrieves artist information from various sources. The fetched data is parsed and stored in an SQLite database built within Emacs for easy retrieval and further processing. Then, the agent uses Emacs' integration with popular data analysis tools like R (using the 'ess' package) or Python (using the 'elpy' package) for subsequent data analysis tasks.
+
+```emacs-lisp
+(require 'request)
+(require 'esxml-query)
+(require 'emacsql-sqlite)
+
+;; Set up the SQLite Database and build the custom crawler here (not shown for brevity)
+
+;; Fetch artist information from the list of target websites
+(dolist (url *list-of-urls*)
+  (request
+   url
+   :parser 'buffer-string
+   :success (cl-function
+             (lambda (&key data &allow-other-keys)
+               (let ((artist-info (extract-artist-info data)))
+                 (insert-artist-into-db db artist-info))))))
+```
+
+By adapting the first subtask with a custom-built web crawler, the agent demonstrates its ability to access and process information from multiple sources within the Emacs environment. The agent collects and analyzes this data to identify patterns and discover promising artists in the art market using only Emacs and its ecosystem of packages and tools.
+
+**** Identify emerging artists
+With the obtained patterns from the analysis, the agent queries APIs or databases to find up-and-coming artists that fit those patterns.
+
+```emacs-lisp
+(request
+ "https://art_db_api.example/emerging_artists"
+ :params `(,@(extract-criteria analysis)))
+```
+
+
+****  Purchase art from selected artists
+   The agent coordinates the acquisition of artwork by coordinating with a banker and an art broker using Emacs packages such as 'smtpmail' for facilitating communication via emails.
+
+```emacs-lisp
+(require 'smtpmail)
+(require 'message)
+
+;; Email Details
+(setq purchase-details "Purchase information with item IDs, prices, and sellers.")
+
+;; Notify Banker
+(send-email "banker@example.com" "Art purchase authorization" purchase-details)
+
+;; Notify Art Broker
+(send-email "broker@example.com" "Request to buy art pieces" purchase-details)
+```
+
+In this example, the agent relies on Emacs and its power to perform complex tasks by breaking them down into smaller subtasks and executing them within Emacs itself. By harnessing Emacs' versatility, the agent can not only
+*** c. agent building a thing
+In this last example, i asked the agent to build an app ontop of the idea from the second example, which we might want to launch into the app store.
+
+In this example, the AI agent combines the objectives of creating a software application and designing a website to build and deploy a mobile app that provides insights into emerging artists and allows users to purchase artwork. We assume that the app development and deployment are targeting the Apple App Store. Here's how an agent living in Emacs can leverage its features to achieve this goal:
+
+1. Gather and analyze requirements: Extend the existing artist data model, schema, and API endpoint to fit the desired app functionalities. This includes additional data fields for each artist and artwork, as well as artist discovery and purchase API endpoints.
+
+2. Design the user interface: Use sketch plugins like 'sketch-el' package, to create a wireframe and design of the app's interface within Emacs. Utilize the mobile platform's design guidelines (e.g., Apple's Human Interface Guidelines) to ensure a professional and consistent look and feel.
+
+3. Develop the app: Leverage the 'react-native.el' package to interact with React Native, a cross-platform mobile app development framework within Emacs. Using Emacs' editing capabilities along with React Native, create and edit components, manage state, handle navigation, and implement the desired app functionalities.
+
+```emacs-lisp
+;; Set up the React Native project
+(react-native-init "ArtApp")
+
+;; Change the current directory
+(cd "ArtApp")
+
+;; Install required packages for the app
+(react-native-install '(@react-navigation/native @react-navigation/stack axios))
+
+;; Start building app components and functionalities in Emacs using the react-native.el package
+```
+
+4. Test the app: Use Emacs and 'appium.el' package to interact with Appium, an open-source test automation framework, to create and run tests. Identify bugs and issues in the app logic or user interface and refine the implementation accordingly.
+
+5. Compile and package the app: Run standard React Native build tools to compile the production-ready app, ensuring all platform-specific assets, such as icons and splash screens, are included.
+
+6. Prepare for app store submission: Create and manage necessary app metadata, promotional materials, and requirements, such as app icons, screenshots, descriptions, and preview videos within Emacs. Additionally, ensure that the app complies with the App Store's guidelines and policies.
+
+7. Deploy the app: Sign the app with an Apple developer certificate using Emacs' integration with the 'codesign' command-line utility. Submit the compiled app, along with its required metadata, to the App Store using Emacs' integration with 'altool' or 'fastlane' tools.
+
+In this example, the AI agent uses Emacs' comprehensive ecosystem to build and deploy a mobile app that
+*** Summary
+As i have shown in the section, emacs is out of the box and today ready to handle Agents. Both in terms of being the interface through which agents are run, as well as an host environment inside of which agents opperate.
+Now, lets look at why emacs might be a great host long term.
+
+** 2. Emacs is a great host environment that provides fertile ground for the long term development of Human Agent Symbiosis
+
+Before i start the exploration of my argument, let me introduce emacs to those who are not familiar with it. Emacs is a highly extensible text editor popular among programmers and writers. built on Lisp, a flexible and powerful programming language. Users can easily extend and modify emacs' features, which allows users to tailor the editor to their preferences. essentially turning it into a multi-purpose workspace. think of it as an entire ecosystem ontop of a compute environemnt where you can write, edit, debug, and run code, and perform various other tasks ranging from productivity, management and organization, communication, writing and much more. 
+[i should write more here about how functions are placed into the global environment and can be referenced and called from anywhere, keyboard, menu, or other code.]
+
+Emacs is one of the oldest software projects on the planet. it's a piece of software going back to the earliest days of computing. it is older than linux, higher order languages  (C or C#), and the internet. emacs has been going strong for 70 years, between 3 and 5 generations of software engineers, and countless paradigms, languages, tools, and environments. emacs has been called the most beautiful piece of software by X. its also been called a great operating system that only needs a good editor. this goes to the heart of why emacs' longjevety.
+
+Emacs not an editor, its an operating system that happens to provides an editor. It is an execeptionally open, flexible, and powerful compute paradigm and platform.
+
+With this said, ive broken down my argument into 4 parts. First ill go into the core mechanics of what makes emacs a great long term host, then ill compare it to other candidates and players, and ill finish
+
+*** Open and Flexible Architecture
+Emacs is open source, which allows for such an integration in the first place. It is free to adopt for this project today, and there isn't really another project like it.
+
+But Emacs is not only open source, it is open in a deeper sense. There is no compile step or anything obfuscating the code. If you want to overwrite any function, editor behavior, any bit of state or any variable, you simply go to the definition by opening the file that holds the code, change it to what you would like it to be, evaluate it to load it into the runtime, and that's it. It is changed in place while Emacs is running, and the next time this bit of code is run, your new updated code runs. This is also aided by the fact that no feature is given precedence over another and no feature has a rigid and predefined place in the interface. It is all subject to the defaults and then the design and intent of the individual using it, allowing emacs' to evolve over time.
+
+This openness has allowed about half a dozen generations of developers to take Emacs and adjust it to make it work just the way they like it. Sometimes this meant minor adjustments like hooking squashing Git commits to file saves or using the OpenDyslexic Font for specific file types. But it can also mean large sweeping changes to the runtime and the inner workings of the system.
+
+Emacs' open runtime environment would enable AI agents to provide more effective assistance, itterating and streamlining workflows and making the user experience ever more personalized and optimized.
+
+Emacs has been through a lot and has been able to adapt to everything. If Emacs were used as a host for an AI agent system, it would prove to be able to adapt to any change in requirements, facilitate any step in the evolution of the cooperation, be it interfaces (API and UI), changing routines, or anything else.
+
+*** Interactive Runtime
+Another key advantage that makes Emacs such a great candidate to become the host environment for an AI agent system is Emacs' interactive runtime environment. Which allows for self-editing, dynamic problem-solving, and facilitates the creation of (more than) context-aware solutions.
+
+The REPL environment enables human operators and AI agents to directly interact with the code that make emacs and the agent run, while they are running.
+This can be done to change the way prompts are texted or agents are provisioned, it allows humans and agents to decide on another strategy in tackling a problem, or to build tools on the spot and incorporate them into the environment.
+
+Moreover, this introspective nature allows AI agents to consider the entire state of the editor when formulating solutions, incorporating information from not only one file or even an entire codebase, but also the shell's output, docs and logs, or the application's git history and issues. There is even a debugger. All with nothing but function calls in an open environment.
+
+The potential power of such a system is immense. To incorporate the previous point; any agent could, on the spot, design a new type of agent who is tasked to collect information from any set of source, summarize into a specific format, and provide it to the parent agent.
+
+In addition, Emacs offers a vast range of capabilities, including filesystem access, process management, powerful SSH tooling, and even an integrated email client. All of this can be harnessed and utilized by AI agents spontaneously in their quest to build and do things. 
+
+*** Text-based Interface
+Emacs' is an entirely text-based tools. The interface of Emacs works exclusively by putting text in square boxes and no box or box-at-place has a default or exclusive use. Also, you will not find buttons and images are kinda difficult (its a whole thing). As LLMs are designed to process and generate text, Emacs' exclusive text environment allows AI agents to operate directly with the core of Emacs. There is a natural synergy between AI, Emacs, and the human users which use text to control the tool as well.
+
+How does this work? Everything in emacs is done by users calling functions. Each and every keystroke is a functioncall and all tools expose nothing but functions to be called by users or other functions. When a tool wants to provide a piece of functionality, it marks the function as `(interactive)`, which places the function into the global registry which makes it callable from anywhere.
+
+You can call all these functions in many different ways, relevant here is that you can call them by passing the name of the function as plain text to the REPL. Which means that any goal you might want to accomplish, may it be a text edit or running some toolchain, you can do that through text through chaining function names and parameters.
+This makes the first step of the architecture of the proposed integration quite straight forward. Pass the output of a finetuned LLM directly into the REPL and evaluate it. 
+The LLM immidiately has the entirety of emacs' abilities at its fingertipps, hijacking existing infrastructure and meeting developers where they are.
+
+*** Operating system level access
+This point is quite straight forward. Both to do and to build, agents would need access to operating system features to be at their most effective. If an agent is tasked to do some research and analysis, they'd need internet access to get at the information, probably filesystem access to store and read documents, process management and inter-process communication to spawn and manage sub-agents, and maybe read system-resource utilization. If an agent is tasked to build something they read and write files, run processes, load internet resources, and so forth. Emacs offers all of this.
+
+
+** 3. Ecosystem advantage
+The extensive Emacs ecosystem and userbase offer a massive advantage for tooling and adoption:
+
+Tools already available:
+The vast library of plugins and tools available in the Emacs ecosystem serves as a rich resource for AI agent systems, granting them a considerable head start against other competing solutions.
+
+Userbase for adoption and training:
+Additionally, the Emacs userbase not only brings a wealth of domain-specific knowledge and coding practices but also boasts a collaborative mindset that can accelerate the adoption and success of AI agent systems. This significant advantage makes Emacs a compelling choice in the race to harness the power of AI for more efficient, innovative, and collaborative software development.
+
+*** emacs already has a library to do anything you might want to do with text on a computer.
+Emacs would have a head start in terms of tooling and functionality compared to "Open"AI, which is still bootstrapping its plugin ecosystem.
+
+ We already have an enormous library of plugins over a wide array of problems and application that can be used by an Agent System. Which would immidiately make it an extremely powerful tool for us to use.
+
+We are talking about everything from org-mode and email clients to interfaces with languages, various domain-specific tools like scientific calculators, statistical software, web browsers, and a lot more. They are all built using Lisp, which means that every capability is accessible through callable functions in the open REPL environment. This offers unmatched breadth, depth and power for an agent.
+
+It's worth noting that other editors often lack key features, like an integrated email client or the ability to control the editor through functions using text input in a REPL. Yet, Emacs offers these. Emacs provides a lot of resources that cover virtually anything one might want to do with text, giving it a meaningful head start ahead of any other ecosystem.
+
+[LOGOS] Emacs has a rich ecosystem of existing packages which cover a wide array of workflows and functionalities. Integrating AI agents into Emacs benefits from this ecosystem by providing the agents with an array of ready-to-use tools, reducing the development overhead, and accelerating the deployment of symbiotic systems.
+*** Emacs already has a huge userbase that could train and use these agents.
+Emacs would also have a head start in terms of userbase and access to data ahead of any other tool or player.
+
+The vast Emacs userbase spans industries, bringing diverse coding practices, workflows, and domain-specific knowledge to the table. This diversity increases the potential for the Agents to learn quickly and to provide more competent assistance, ultimately improving the AI's effectiveness in various contexts.
+
+Members of the Emacs community are often eager to share their knowledge, tools, and experiences to help others improve their workflow. This collaborative mindset will be key to accelerating the adoption and success of any Agent system within Emacs. 
+
+Emacs' long history of adaptability and resilience offers a solid foundation upon which this can be built. The text editor / operating system has evolved over decades, embracing new technologies and meeting the needs of users across generations. This adaptability bodes well for Emacs' ability to successfully pull off this ambitious move.
+
+Given runaway effects of AI, the potential of self optimization (see post-script), and the prevailing winner-take-all dynamics of the internet, this could steal the show from other, less Open AI players at a critical moment. Players that are not as open as emacs. 
+
+Also Emacs has a lot of users that could use and would benefit immidiately from this.
+
+[LOGOS & PATHOS] Emacs' supportive and engaged community can contribute to the rapid training and development of AI agents by providing high-quality feedback and iterative improvements. This, in turn, will improve agents' performance and understanding, creating a virtuous cycle of mutual benefits between the Emacs community and AI systems.
+   - observing [emacs <3 ai] insights into the user's habits, preferences, and workflows, further enhancing the efficiency and intuitiveness of the user experience.
+*** summary
+Embracing these three aspects, Emacs can be adopted as the environment and body for AI agent systems, unlocking new levels of productivity, creativity, and collaboration among its users while shaping the future of programming and editor ecosystems.
+these are the resons why i think emacs would benefit ai and ai would benefit emcas.
+emacs would be propelled into the next era of software, while empowering ai to new ehights.
+
+
+
+   it hijacks existing infrastructure.
+   it meets us humans where we are.
+   - Knowledge sharing: Advanced users contribute to development and adoption
+* Comparison
+In this section, we discuss and contrast Emacs with competing AI agent host environments, focusing on their respective strengths and weaknesses.
+
+When considering existing code editors such as Visual Studio Code, Vim, or the various IDEs, certain advantages come to the forefront – they are often easy to use, and they cater to a large user base. However, these environments encompass limited use cases and are significantly less flexible than Emacs. They lack the open and flexible architecture emacs provides, preventing users and the agents from accessing and altering the inner workings of the system. Consequently, this restricts their capacity to evolve. Furthermore, they typically don't offer interactive runtime environments like REPLs, ultimately hindering user efficiency when working with AI agents.
+
+Operating systems like Linux are themselves as open and highly customizable, providing a vast array of text-based interfaces and tools. However, Linux falls short when focusing on its synergy with AI agents in terms of purpose, design, and tooling. More specifically, such operating systems serve as platforms on which tools run, rather than tools created for immediate interaction and problem-solving.
+The divide between graphical and text-based interfaces in operating systems generates another dilemma for AI-hosting, as text prompts limitations.
+
+As for OpenAI's approach, its dominance in AI technology and widespread user base combats the weaknesses of Emacs. Nevertheless, OpenAI's current implementation lacks an open runtime, limiting its use cases and impeding evolution. Additionally, their ecosystem pales in comparison to what Emacs offers. Other languages, such as Python, do possess flexibility and offer a wide range of packages for various tasks. Yet, they still don't fully meet the requirements of a fitting environment for AI agents since their interfaces are often either not graphical or not text-based, creating limitations for human interaction.
+
+Taking these comparisons into account, Emacs stands out as an exceptional environment for hosting AI agents. Its open and flexible architecture allows both users and agents to adapt and customize the system on-the-fly, while its interactive runtime environment enables efficient collaboration and problem-solving. Moreover, its mature ecosystem and text-based interface remove barriers for AI agents, optimizing their abilities. In summary, Emacs distinctly meets the needs of hosting AI agents, fostering a strong symbiotic relationship between humans and AI, and promoting future innovation.
+
+* Emacs is written in lisp, the original language of AI. Not an argument for the premise, but cool.
+Lisp (short for "List Processing") is considered one of the original programming languages used for artificial intelligence. It was developed in the late 1950s by John McCarthy, an early pioneer of AI. Many early AI systems, such as SHRDLU and the General Problem Solver, were written in Lisp due to its flexibility and expressiveness. Many books on ai use lisp like "paradigms of artificial intelligence programming" by peter norvig.
+
+While Lisp's status as the original language of AI is no argument for the premise of this article, it does provide an interesting link between Emacs' past, our current situation, and our potential future.
+To recognize Lisp's historical significance and its deep roots in the AI domain at this historic moment feels beautiful to me. Again, no argument for the premise, just a systems-aesthetic-ish observation that I find interesting.
+
+Embracing Lisp as part of Emacs' heritage symbolically weaves in AI's early days into the absolute beast of tool that AI has become. That seems pretty to me.
+[universe written in lisp]
+* What might that look like?
+there are three steps.
+1. llm directly into the repl. for conding assistance.
+2. agents that use emacs.
+3. headless emacs agents. an outside interface to provision the agents without the user ever needing to open and use emacs, where the agents run all the tools of emacs there might be a whole generation of emacs users that never use a single shortcut, or dont even know they are emacs users.
+
+if we build and finetune a model for agent work in emacs, we will gain an exceptionally well developed tool in the hands of the most powerful tool in computing, in an environment thats maleable and will be able to evolve into the host of the most important symbiosis with any of humanities tools.
+
+Imagine an Emacs package designed to feed coding activities, such as function calls, code outputs, and git-related actions into a  AI model tailored for Emacs. As more developers adopt the package and contribute to its training, the AI will become increasingly adept at not just assisting with coding tasks, but also adapting to diverse preferences and requirements, providing highly personalized and versatile support.
+By integrating this AI-driven package into the development process, the Emacs environment would transform into a powerhouse of cutting-edge assistance. This collective effort would enable greater efficiency, foster innovation, and encourage collaboration within the community, taking Emacs to new heights and shaping the future of computing.
+
+Architecture
+llm output straight into the emacs REPL.
+this allows it to decide if it wants to put text on the screen or run some code.
+
+Control:
+use buffers for interface of text and infomation and functions for interaction and control.
+
+Training:
+
+Data Gathering:
+
+** who would do it?
+there are plenty of large actors in this space. any of the coding agent llm developers. stability maybe?
+then the emacs developer community
+
+** what steps would need to be taken?
+finetune a model for agent work in emacs
+interesting approach to that: define a goal, let it try, use success failure for the error function. slowly increase difficulty. itterate.
+or ask for volunteer data contributions. install a package, collect data, send it to a central hub, train the model.
+
+* Why Emacs might not be the perfect candidate for an AI fusion?
+First up, Emacs is single-threaded and doesn't have a GPU interface. But thats either solveable or could be worked around. What I see as bigger obstacles are the documentation, the difficulty of reading the codebase and the lack of a /modern/ community hubs, and privacy concerns.
+
+For the documentation, I know its "self-documenting", but I find it extremely hard to understand how to use these self-documented features as they state facts and usually fall short on usage examples and guides. Nothing about the documentation comes close to what is outlined as good documentation in 4 types of "documentation" by divio https://documentation.divio.com/. Which is especially obsturcting since, ...
+
+Emacs' codebase is filled with ancient conventions that are pretty much booby traps waiting for newcomers. Emacs being double my age brings with it some baggage. I fear this might cause a lot of friction for new developers who might want to contribute to the project and develop an Agent System like this.
+
+Lastly, let's touch on the privacy. The Idea of an AI trained on my emacs instance is both scary and sensitive from a privacy perspective. There are ways to solve this (like sharded training and other distributed approaches), but they require a lot of work and are not trivial to implement. 
+
+ to facilitate any step in the evolution of the cooperation, may it be interfaces (API and UI)
+ when i say that, i mean anything but buttons. 
+
+I generally take with David Deutsch's "On Optimism" on this issue. Embracing development and staying on the cutting edge of innovation as a way to defend again malignant actors and face unforseen challanges. It is imperative that we prioritize the creation and utilization of fundamental capabilities, along with promoting the values of criticism, critical thinking, error-correction, and open dialogue. I ask myself wheather I would rather see these capabilities in "Open"AI's hands.
+** Is there an imperative to build it?
+i. [PATHOS] With the rise of AI-driven tools, there is concern regarding the trust and privacy of user data. Emacs, being an open source project with a strong ethic of user empowerment and control, provides transparency and user agency. This fosters trust in the AI-human symbiosis and encourages users to adopt such technology in Emacs more readily.
+* end of the article
+My thinking about this argument has changed in the process of writing it out. I started writing thinking that Emacs would benefit from having an agent system natively built in, which i still think is true. But what I uncovered in writing this argument is that the inverse is even more attractive. AI would benefit from having Emacs as its host. 
+
+The open-source community has been presented with a unique opportunity to shape the future of programming and text editing by integrating AI with Emacs. As the AI revolution gathers pace, Emacs**** n unite its rich heritage rooted in Lisp and its powerful, versatile nature to become a trailblazer in the AI-driven era of development. It's time to seize this moment, harness the power of AI, and invest our passion and skills in creating an AI-infused Emacs that elevates it to new heights and shapes the future of computing. Let us strive forward together, embracing optimism and innovation, as we combine our efforts to transform the way we interact with technology and forge a new, unprecedented AI-driven future for Emacs and its users.
+
+Yes this last paragraph was written by GPT4. I couldnt resist. Anyways. I think its a cool thought. Emacs can be the operating system of AI. This community was dealt an amazing hand. Its time to play
+
+it would be the Open Source communities greates chess move at the current time to start to dethrone "Open"AI.
+
+

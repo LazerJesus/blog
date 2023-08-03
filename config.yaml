@@ -17,7 +17,7 @@ permalinks:
 
 params:
     mainSections:
-        - post
+        - posts
     featuredImageField: image
     rssFullContent: true
     # favicon:  # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
@@ -31,7 +31,6 @@ params:
         lastUpdated: Jan 02, 2006 15:04 MST
 
     sidebar:
-        emoji: 🍥
         subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         avatar:
             enabled: true
@@ -43,21 +42,21 @@ params:
         toc: true
         readingTime: true
         license:
-            enabled: true
+            enabled: false
             default: Licensed under CC BY-NC-SA 4.0
 
     widgets:
-        homepage:
+        homepage: 
             # - type: search
-            # - type: archives
-            #   params:
-            #       limit: 5
+            - type: archives
+              params:
+                  limit: 5
             # - type: categories
             #   params:
             #       limit: 10
-            - type: tag-cloud
-              params:
-                  limit: 10
+            # - type: tag-cloud
+            #   params:
+            #       limit: 10
         page:
             - type: toc
 
@@ -92,20 +91,25 @@ params:
 ### See https://docs.stack.jimmycai.com/configuration/custom-menu.html
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
-    main: []
+    # main: []
+    # main:
+    # - identifier: "ai-and-emacs"
+    #   name: "AI and Emacs"
+    #   url: "/posts/ai-and-emacs"
+    #   weight: 1
 
     social:
         - identifier: github
           name: GitHub
-          url: https://github.com/CaiJimmy/hugo-theme-stack
+          url: https://github.com/finnfrotscher
           params:
               icon: brand-github
 
-        - identifier: twitter
-          name: Twitter
-          url: https://twitter.com
-          params:
-              icon: brand-twitter
+        # - identifier: twitter
+        #   name: Twitter
+        #   url: https://twitter.com
+        #   params:
+        #       icon: brand-twitter
 
 related:
     includeNewer: true
@@ -124,9 +128,9 @@ markup:
             ## Set to true if you have HTML content inside Markdown
             unsafe: false
     tableOfContents:
-        endLevel: 4
         ordered: true
         startLevel: 2
+        endLevel: 3
     highlight:
         noClasses: false
         codeFences: true

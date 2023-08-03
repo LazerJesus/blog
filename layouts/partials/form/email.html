@@ -1,0 +1,98 @@
+<!-- scipt -->
+<script>
+    function validateEmail(email) {
+	var re =
+	    /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+	return re.test(email);
+    }
+
+    function submitForm(e) {
+	e.preventDefault();
+	var emailInput = document.getElementById("emailInput").value;
+
+	if (!validateEmail(emailInput)) {
+	    alert("Invalid email address");
+	    return false;
+	}
+	var data = { email: emailInput };
+
+
+	var url = "https://jqcgbzfcauvaabptdcvc.supabase.co/functions/v1/mailing-list-add-by-form-submit"
+	    // "http://localhost:54321/functions/v1/mailing-list-add-by-form-submit";
+
+	var TOKEN =
+	    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpxY2diemZjYXV2YWFicHRkY3ZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTAxMDcwODgsImV4cCI6MjAwNTY4MzA4OH0.QbPYEDM74rPlxAEQ4OapKqYPvWTStZuGCzpX3g7gUT4"
+	    // "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0";
+
+	function changeColor(color = "darkseagreen") {
+	    var input = document.getElementById("emailInput");
+	    var currentColor = input.style.border;
+	    input.style.border = "2px solid " + color;
+	    setTimeout(function () {
+		input.style.border = currentColor;
+	    }, 3000);
+	}
+
+	fetch(url, {
+	    method: "POST",
+	    headers: {
+		Authorization: TOKEN,
+		"Content-Type": "application/json",
+	    },
+	    body: JSON.stringify(data),
+	}).then(async (response) => {
+	    console.log("result", response);
+	    if (response.status == 200 || response.status == 201) {
+		changeColor("darkseagreen");
+	    } else {
+		changeColor("lightcoral");
+	    }
+
+	    response.text().then((data) => {
+		console.log("Data", data);
+	    })
+
+	});
+    }
+</script>
+
+<!-- html -->
+
+<form id="emailForm" onsubmit="submitForm(event)"
+      class="search-form widget">
+    <p>
+	<label>Personal Mailing List</label>
+	<input
+	    name="keyword" 
+	    type="text"
+	    id="emailInput"
+	    placeholder="Email"
+	    required
+	    />
+
+	<button
+	  type="submit"
+	  title="Submit">
+	  Join
+	</button>
+    </p>
+</form>
+
+<!-- styles -->
+
+<style>
+.search-form label {
+    inset-inline-start: 12px;
+}
+.search-form button {
+    opacity: 0.8;
+}
+.search-form input {
+    padding-left: 12px!important;
+}
+:root[data-scheme=dark] .search-form button {
+    color: #fff;
+    opacity: 0.4;
+}
+
+</style>
