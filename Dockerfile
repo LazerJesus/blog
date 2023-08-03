@@ -1,5 +1,5 @@
 # Use the official Hugo image as the build environment
-FROM klakegg/hugo:0.111.0-ext-alpine AS builder
+FROM klakegg/hugo:0.107.0-ext-alpine AS builder
 
 # Copy the content of your Hugo project into the container
 COPY . /src
