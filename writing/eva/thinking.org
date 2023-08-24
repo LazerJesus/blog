@@ -1,0 +1,140 @@
+
+* initial rewrite
+what do i want from this article?
+it has shifted.
+it used to be to inspire someone to build it. that worked. i built it. fucking idiot lemming allways falling in love with ideas and shit.
+but now? 
+i want to introduce eva and motivate helping hands to join the effort.
+for this i need to explain why this project is worthy of YOU the readers time and energy.
+for this i need to explain why emacs and ai are such a powerful fit,
+how this project is structured,
+where it will/can go,
+and greed the readers into helping, appealing to self interest and aesthetics.
+
+all this text ive written for the first article is not useful here. at least not the depth and the extend. the core reasons are still valid, text is where humans, emacs and llms meet, there are already functions for everything to be done with text, its fertile ground long term.
+
+in the intro i am leaning heavily on the environment in which te symbiosis is manifested and friction.
+i like that. but friction is only the thing to be avoided in order to gain maximum of something else. what is that else? value. i want it to execute on my behalf. execution. i could frame the article as we want the agent to execute our intent and minimize friction in the process to derive maximum value.
+
+We want the agent to execute our intent and minimize friction in the process to derive maximum value.
+Emacs as Environment.
+
+So, we have established there is a common denomenator. why does that matter? 
+
+why am i thinking of friction. frictionn in thise context measn that
+we dont need to translate between substrates which might introduce signal loss and introduce various cost. and it also means that the entire state is accessible.
+
+common denomenator, no translation, state is accessible, 
+
+ok this is super heady. maybe not the best strategy.
+then why should emacs be the environment?
+
+text is common thing shared between
+all of it is accessible (for control and learning)
+jobs to be done and ecosystem advantage
+open runtime
+flexible architecture
+
+
+
+maybe i can try to just gloss over all of these points rather quickly and focus on future possibilities here. no need to rigerously proof it, just provide some memes that resonate in the audience
+
+Emacs is text all the way down and pretty much anything you might want to do with text on a computer you can do in emacs.
+LLMs are trained on and output text, and in Agent systems text is used to facilitate communication between multiple LLMs.
+We Humans love to communicate in text. Its arguably humanities most significant invention. You're reading text right now.
+
+
+
+
+
+* Emacs is written in lisp, the original language of AI. Not an argument for the premise, but cool.
+Lisp (short for "List Processing") is considered one of the original programming languages used for artificial intelligence. It was developed in the late 1950s by John McCarthy, an early pioneer of AI. Many early AI systems, such as SHRDLU and the General Problem Solver, were written in Lisp due to its flexibility and expressiveness. Many books on ai use lisp like "paradigms of artificial intelligence programming" by peter norvig.
+
+While Lisp's status as the original language of AI is no argument for the premise of this article, it does provide an interesting link between Emacs' past, our current situation, and our potential future.
+To recognize Lisp's historical significance and its deep roots in the AI domain at this historic moment feels beautiful to me. Again, no argument for the premise, just a systems-aesthetic-ish observation that I find interesting.
+
+Embracing Lisp as part of Emacs' heritage symbolically weaves in AI's early days into the absolute beast of tool that AI has become. That seems pretty to me.
+[universe written in lisp]
+* end of the article
+My thinking about this argument has changed in the process of writing it out. I started writing thinking that Emacs would benefit from having an agent system natively built in, which i still think is true. But what I uncovered in writing this argument is that the inverse is even more attractive. AI would benefit from having Emacs as its host. 
+
+The open-source community has been presented with a unique opportunity to shape the future of programming and text editing by integrating AI with Emacs. As the AI revolution gathers pace, Emacs**** n unite its rich heritage rooted in Lisp and its powerful, versatile nature to become a trailblazer in the AI-driven era of development. It's time to seize this moment, harness the power of AI, and invest our passion and skills in creating an AI-infused Emacs that elevates it to new heights and shapes the future of computing. Let us strive forward together, embracing optimism and innovation, as we combine our efforts to transform the way we interact with technology and forge a new, unprecedented AI-driven future for Emacs and its users.
+
+Yes this last paragraph was written by GPT4. I couldnt resist. Anyways. I think its a cool thought. Emacs can be the operating system of AI. This community was dealt an amazing hand. Its time to play
+
+
+* thinking 
+
+uff difficult question. what do i want to convey here? i want to make the readers hot and horny for this tool. so how do i do this?
+demonstrate a few commands that could be run. but that really doesnt get us too far does it? what about the unbuilt agent capabilities and how an agent might use emacs? yeah what about it? what does that look like? now we go into specific code examples? fuck. thats pretty low level. what about just describing a project process on a high level. thats kinda meh as an example. fuck. oook what do i do? 
+
+
+so i wrote about some high level reasons like runtime and ecosystem. i think next comes really the part that goes into architecture.
+
+basic architecture is simple. we have an LLM and a Emacs package. the pass a command from emacs to the model as a prompt. the model responds with Elisp code. the response gets run by the repl. thats the basic application loop.
+
+there are other loops.
+training, where we take data (), and a model (), and a training loop to output a new model ()
+
+so we have:
+application loop
+training loop
+    data
+    input model
+    training loop
+    new model
+    
+after describing the current architecture, from there i could go to where i need help. where i need ot make the point again of whats possible, because i need to explain what data we need.
+
+
+
+this shit is still weak on the WHY IS THIS A GOOD IDEA.
+i dont have a good articulation of the vision yet.
+fuck.
+
+but ill need the architecture thing anyways.
+
+
+
+
+
+
+
+all of my reasons are only one sentence thats too short. but do i feel like those are the reasons?
+what are my reasons.
+text
+continuous runtime
+ecosystem
+70years 
+
+agent perspective.
+
+
+yeah ok what about text.
+what if gpt4 was trained not to produce text but functions.
+it would still be limited by its content window.
+it cant produce every function from scratch over and over again.
+it shouldnt run indefinitely in some black box, nor limited to some small execution window.
+
+then it would need an environment that is accessible to both human and gpt, where each of the previous points can be adressed.
+
+one. it would not be limited by the xontext window, any intermediate state or reasoning or checkpoint could be printed to a buffer or stored in a file, to be accessed on demand.
+
+two. emacs has a set of functions (from its ecosystem ie melpa) for almost any job to be done that the model can be trained on. so it doesnt need to learn the same over and over again. in the same vein, any functionality that might be required for smooth operation of the agent can be written into the runtime as needed.
+
+three. to avoid running the system in a black box while maintaining the ability to run large executions, we would need to develop some sort of application to view into its state  at any point and exert control over it. we would need to know how many and what type of agents there are, how many resources they consume and what tools they are accessing, and whe would like to follow their reasoning by reading the prompts that they provide each other. imagine the effort and engineering required for "Open"AI to build such a system. for emacs users that's buffers and a hand full of functions.
+
+-------------------------
+
+ok so i have all my abstract arguments, then i have this thought experiment to illustrate the idea. can i combine them/
+
+what if i start with the reasons, introduce the thought experiment, go through the difficualty, and then show how teh reasons apply  in the though experiment.
+
+gpt4 trained not on text but functions.
+we'd need a sysem of control.
+
+emacs is the perfect host sytem for that ai.
+its a continuous execution environemnt. text based. infinitely maleable. a meeting point of ai and human. 
+
+
+

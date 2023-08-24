@@ -31,7 +31,7 @@ params:
         lastUpdated: Jan 02, 2006 15:04 MST
 
     sidebar:
-        subtitle: hi ipsum dolor sit amet, consectetur adipiscing elit.
+        subtitle: "Currently creating EVA, the Emacs virtual assistant. Former cofenster co-founder and CTO. <br><br>I have an idea what the future of education might look like.<br>Will #BuildInPublic"
         avatar:
             enabled: true
             local: true
@@ -101,9 +101,14 @@ menu:
     social:
         - identifier: github
           name: GitHub
-          url: https://github.com/finnfrotscher
+          url: https://github.com/lazerjesus
           params:
               icon: brand-github
+        - identifier: twitter
+          name: Twitter
+          url: https://twitter.com/finnfrotscher
+          params:
+              icon: brand-twitter
 
         # - identifier: twitter
         #   name: Twitter

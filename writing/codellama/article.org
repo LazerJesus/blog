@@ -1,0 +1,37 @@
+#+TITLE: Codellama
+#+AUTHOR: Finn
+#+DATE: <2022-07-13 Wed>
+#+DESCRIPTION: New year. New website. New journey.
+
+#+hugo_front_matter_format: yaml
+# #+hugo_menu: :menu main
+#+export_file_name: AI-and-Emacs
+#+export_slug: AI-and-Emacs
+#+hugo_base_dir: ../../
+#+hugo_custom_front_matter: :slug ai-and-emacs
+* Introduction
+
+** Brief overview of CodeLlama
+Its purpose and target audience
+Installation Guide
+
+** Step-by-step instructions for setup
+Common troubleshooting tips
+Basic Usage
+
+** Quick start guide for beginners
+Key features and functionalities
+Fine-Tuning Techniques
+
+** Real-world applications
+Sample code snippets
+Comparison with Similar Tools
+
+** Strengths and weaknesses
+Unique selling points
+Community and Support
+
+** Summary of key takeaways
+Encouragement to engage with the tool
+Additional Resources
+
