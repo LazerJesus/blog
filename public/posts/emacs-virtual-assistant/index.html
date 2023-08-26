@@ -247,7 +247,59 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#eva-say-hello-world">(eva &ldquo;say hello world&rdquo;)</a></li>
+        <li><a href="#premise">Premise</a></li>
+        <li><a href="#emacs-special-sauce">Emacs special sauce</a>
+          <ol>
+            <li><a href="#text">Text</a></li>
+            <li><a href="#runtime">Runtime</a></li>
+            <li><a href="#ecosystem">Ecosystem</a></li>
+          </ol>
+        </li>
+        <li><a href="#the-ghost-in-my-sh-dot-el">The Ghost in my sh.el</a>
+          <ol>
+            <li><a href="#execution">Execution</a></li>
+            <li><a href="#observability">Observability</a></li>
+            <li><a href="#ongoing-conversation">Ongoing Conversation</a></li>
+            <li><a href="#immitation">Immitation</a></li>
+          </ol>
+        </li>
+        <li><a href="#end">End</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
@@ -338,7 +390,7 @@ this is important and relevant because it makes the ai&rsquo;s actions very imme
 <p>Today in Emacs, for any job-to-be-done that involves text, there is package for it. We can do anything that can be done with text on a computer. This is a testiment to the breadth and depth of possibilities the emacs enables. There are sohpisticated packages for everything. And the AI immidiately has the entirety of emacs&rsquo; capabilities and at its fingertipps, hijacking existing infrastructure.</p>
 <p>Whether you&rsquo;re coding in Python, writing LaTeX documents, or even managing your life through Org-mode, there&rsquo;s likely an Emacs package that&rsquo;s got you covered. This extensive library of functions and packages means that EVA can be trained to assist with virtually any text-related task you can think of, making the possibilities for human-AI collaboration virtually limitless.</p>
 <p>Thats the three reasons why the environment Emacs provides is optimal for colaborative creating with an AI.</p>
-<h2 id="the-ghost-in-my-sh-dot-el">The ghost in my sh.el</h2>
+<h2 id="the-ghost-in-my-sh-dot-el">The Ghost in my sh.el</h2>
 <p>So, how does EVA leverage Emacs&rsquo; text, runtime, and ecosystem? To answer that in one sentence: You have an ongoing conversation with EVA, in the same space that the execution happens in, using a shared toolset.</p>
 <h3 id="execution">Execution</h3>
 <p>When you call `(eva &ldquo;&rdquo;)`, EVA generates Emacs Lisp code in response that&rsquo;s executed in the REPL, directly affecting the editor&rsquo;s state. She can work directly on the project files and adjust the code as needed. She can read the content of any resource, shell or process within your project to better understand the context. If a specialized task arises, EVA can spawn sub-agents focused on reasoning, planning or solving problems. If she needs clarification, EVA can initiate a chat buffer to ask you directly. When you&rsquo;re debugging a problem, she&rsquo;ll have access to all the same informatinon you do, and then some. You could even call her on a cron job to add some initiative on her end, or to automate routine tasks.</p>
