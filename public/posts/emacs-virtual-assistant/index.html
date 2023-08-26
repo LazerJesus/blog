@@ -13,6 +13,8 @@
 <meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2022-07-13T00:00:00&#43;02:00'/><meta property='article:modified_time' content='2022-07-13T00:00:00&#43;02:00'/>
 <meta name="twitter:title" content="EVA - The Ghost in my sh.el">
 <meta name="twitter:description" content="The first AI trained to work along side you, in Emacs. The Emacs Virtual Assistant.">
+    <link rel="shortcut icon" href="/favicon.ico?v=2" />
+
     </head>
     <body class="
     article-page
@@ -245,48 +247,7 @@
     </ol>
 </aside>
 
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                
-    <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">Table of contents</h2>
-        
-        <div class="widget--toc">
-            <nav id="TableOfContents">
-  <ol>
-    <li><a href="#intro-to-the-article">Intro to the Article</a>
-      <ol>
-        <li><a href="#tl-dr">TL;DR</a></li>
-        <li><a href="#inhaltsverzeichnis"><!-- raw HTML omitted -->TODO<!-- raw HTML omitted --> Inhaltsverzeichnis</a></li>
-      </ol>
-    </li>
-    <li><a href="#p-dot-s-dot-pre-scriptum">P.S. Pre Scriptum</a></li>
-    <li><a href="#premise">Premise</a></li>
-    <li><a href="#why-is-emacs-special-in-this-context">Why is Emacs special in this context?</a></li>
-    <li><a href="#what-can-eva-do-in-two-years">What can EVA do in two years?</a></li>
-    <li><a href="#architecture">Architecture</a></li>
-  </ol>
-</nav>
-        </div>
-    </section>
-
-            
-        
-    </aside>
-
+    
 
             <main class="main full-width">
     <article class="main-article">
@@ -338,7 +299,7 @@
 
 
                 <time class="article-time--reading">
-                    6 minute read
+                    7 minute read
                 </time>
             </div>
         
@@ -353,73 +314,58 @@
     <section class="article-content">
     
     
-    <h2 id="intro-to-the-article">Intro to the Article</h2>
-<p>We are in the middle of an once in a lifetime revolution. AI is here and more is coming. If you are anything like me, you&rsquo;re watching this revolution unfold from within your Emcas buffers and with the aid of copilot.el and the amazing gpt.el package, more and more of your workflows become aided by these models by the day.</p>
-<p>But what if we can go further than calling 3rd party models from emacs. What if we could go <strong>A LOT</strong> further?</p>
-<p>Introducing the Emacs virtual assistant, short EVA. The first model to be trained specifically to work inside Emacs.</p>
-<p>This is a big deal. Why is this a big deal?
-In this article, I&rsquo;ll argue that, even tho Emacs is ancient, it is uniquely well placed to benefit and <!-- raw HTML omitted -->be benefitted<!-- raw HTML omitted --> by LLMs. And I will attempt to articulate my vision for a deep integration of LLMs and Agents into the core of Emacs.</p>
-<p>This is a long article, but in short it can be summarized as:</p>
-<h3 id="tl-dr">TL;DR</h3>
-<p>&gt; AI needs a body, Agents need a host, and Emacs can be that.</p>
-<ul>
-<li>LLMs operate on text and Emcas is text all the way down.</li>
-<li>Agents need an environment to operate in and tools at their disposal. Emacs&rsquo;s REPL is a great environment (continuous runtime, functional, open) and there are tools for everything one might want to do with text and then some.</li>
-<li>Emacs has a huge userbase that can provide training data, adopt and derive benefit from this AI.</li>
-<li>Emacs is written in Lisp, the original language of AI. Which is not an argument for the premise, but kind of cool.</li>
-<li>This is at an alpha stage, we need Data, a AI Model, and Application development to get this off the ground. Please help.</li>
-</ul>
-<h3 id="inhaltsverzeichnis"><!-- raw HTML omitted -->TODO<!-- raw HTML omitted --> Inhaltsverzeichnis</h3>
-<p>i will start with some worldbuilding, loading current affairs into context.
-i will now go into an example of how emacs works for the uninitiated and from there draw the line to the requirements any agent systems might have, and how those connect.
-i will now go into an example of the taskexecution of an agent by example.
-i will follow that up by extracting or abstracting the actual steps such an agent does to accomplish these goals.
-then i will go highligh how all of these steps are already done inside emacs, in a way that is accessible to these agents.
-i will continue by pointing out other aspects of symbiosis.
-and end on some counterfactuals to disprove this idea, closing thoughts and a few post scriptums.</p>
-<h2 id="p-dot-s-dot-pre-scriptum">P.S. Pre Scriptum</h2>
-<p>First a sentence on nomenclature. Throughout this article I will refere to AI, AI systems, and Agents interchangeably. All refering to this tool I am proposing, that EVA is the first step off.</p>
-<p>Secondly, I have an intent in writing this article. I want to have this tool, but I can build it all by myself. I want you to join me in creating it. There are multiple ways of contributing and I will go into them in the end. They are quite self explanatory once you&rsquo;ve read the article.</p>
-<p>Thirdly, We want the agent to execute our intent and minimize friction in the process to derive maximum value.</p>
+    <h2 id="eva-say-hello-world">(eva &ldquo;say hello world&rdquo;)</h2>
+<p>We are in the middle of a once in a lifetime revolution. AI has is here and more is coming. If you&rsquo;re also an Emacs user, you&rsquo;re watching this revolution manifest from within your Emacs buffers, with the aid of packages like copilot.el or the amazing gpt.el. I continuously see more and more of my workflows get aided by these models.</p>
+<p>But what if we could go further than calling 3rd party models from within Emacs. What if we could go <strong>A LOT</strong> further?</p>
+<p>Introducing Emacs Virtual Assistant, short EVA. The first AI model intended to work alongside you within Emacs.</p>
+<p>To understand what EVA will be, follow me into a short exploration of the idea.</p>
 <h2 id="premise">Premise</h2>
-<p>The world is changing. The age-old promise of AI is manifesting infront of our eyes.</p>
-<p>As AI becomes more prevalent, it will handle an increasing amount of execution, while humans bring intent and judge design. So, a symbiotic relationship will form between humans and AI systems, with human intent driving agents execution, and itteration bridging the delta between state and goal. Reducing friction in this interaction will be critical.</p>
-<p>This process of symbiotic cocreation needs to be facilitated in some environment.
-This AI needs to be instructed and controlled through an interface and it needs to have access to tools and resources that it is familiar with trained on. To me, it doesn&rsquo;t feel entirely strange to say that it needs a body - something through which they can act on the world, communicate, reflect, think, plan and memorize.</p>
-<p>This environment is the highest lever for reducing the aformentioned friction.</p>
-<p>Microsoft will build out Visual Studio Code and Windows, &ldquo;Open&quot;AI has already launched their MVP with the plugins marketplace, and countless startups will join the race. But as highlighted in the leaked Google memo, open-source is the winning horse in this competition.</p>
-<p>Emacs could, and in my opinion should, be adopted to be that environment, that body.
-Why is that a good idea?</p>
-<h2 id="why-is-emacs-special-in-this-context">Why is Emacs special in this context?</h2>
-<p>Emacs is a great candidate to build an AI agent system into and on top of. Why do I believe that?
-This comes back to environment and friction, and there are several reasons that point to emacs and LLMs being a match made in heaven.</p>
-<p>Humans, LLMs and Emacs share text as their common denomenator which greatly reduces friction.</p>
+<p>As AI becomes more prevalent and capable, it will handle an increasing amount of execution. Leaving us humans to drive intent and to judge design. A symbiotic relationship will form between humans and AI systems. Human intent will drive agent execution. The delta between state and goal getting bridged by colaborative itteration.</p>
+<p>This process of symbiotic co-creation needs to be facilitated in a suitable environment. Both participants of this relationship, human and AI, each have their own role and needs. The AI&rsquo;s need methods for reasoning through instructions and problems, and tools at its disposal to do the actual implementation. And we need to have access and control over the reasoning and execution. To assess, provide feedback and steer. Reducing friction in this interaction will be critical, requireing fast feedback loops.
+And Emacs provides the perfect environment for this.</p>
+<h2 id="emacs-special-sauce">Emacs special sauce</h2>
+<p>Emacs provides three key ingredients that make it the ideal environment for human-AI symbiosis: it&rsquo;s entirely text based, it&rsquo;s interactive runtime, and a massive ecosystem.</p>
+<h3 id="text">Text</h3>
+<p>Humans, language models, Emacs, and the subject matter we operate on share text as their common denominator. This greatly reduces friction. Emacs is controlled entirely through text, specifically the invocation of elisp functions. We load the subject matter of our work (code, a book, emails, etc) as text into emacs and call functions on it as text. Every keystroke is essentailly a functioncall. Eva can call the exact same functions.</p>
+<h3 id="runtime">Runtime</h3>
+<p>Emacs is an interactive environment.
+This allows the ai and us to inhabit the same space while working on the subject matter. i mean the buffers, functionspace, and editor space.
+this is important and relevant because it makes the ai&rsquo;s actions very immediate. it aligns us. it&rsquo;s almost like empathy. by inhibitiing the same runtime, we can cocreate in realtime.</p>
+<p>Unlike other editors that are just text manipulators, Emacs is essentially an open, continuous Lisp interpreter. This allows EVA to read from, write into, and even modify the environment in real-time. It&rsquo;s not just a playground for code; it&rsquo;s a living, breathing ecosystem where both the human and the AI agent can co-exist, allowing for real-time tracing, debugging, and control insertion at any step of the process.</p>
 <p>Emacs is an open and continuous environment that an Agent can write into, read from and mutate, while the human operator can trace and insert control at any step.</p>
-<p>Any Job-to-be-done that involves text on a computer, emacs already has a package of functions that an agent can be trained on and a human can use through the emacs UI.</p>
-<p>Emacs has proven itself to be a fertile ground for innovation, as it&rsquo;s been around for 70 years, due to it open core and timeless, flexible architecture.</p>
-<p>And from the AIs perspective, Emacs is essentially a REPL with an operating system built in and it can be controlled entirely through functions in the form of text. That is very powerful paradigm for running and managing Agents.</p>
-<hr>
-<p>Emacs&rsquo; open runtime environment would enable AI agents to provide more effective assistance, itterating and streamlining workflows and making the user experience ever more personalized and optimized.
-And the LLM immidiately has the entirety of emacs&rsquo; capabilities at its fingertipps, hijacking existing infrastructure and meeting us developers where we are.</p>
-<p>This is all fairly abstract. Lets get into specifics.</p>
-<h2 id="what-can-eva-do-in-two-years">What can EVA do in two years?</h2>
-<p>an agent that combines the reasoning and planing abilities demonstrated by Graph of Thought, with the ability to access and navigate projects, an entire os, and the internet, and the ability to act and make changes to code.
-so you have this tool you could tell to make add a new feature to a class and remove another, and then to make the rest of the codebase use the new feature and depracate the old, adjust test, git commit it once it works, and if the tests succeed, deploy it. and instead of you coding each step, you have an ongoing conversation with EVA who does all the execution, while you observe it and follow allong, halting it if it goes into a wrong direction and responding to question when the reasoning falls short.
-you can collaborate on code, research, web browsing, emails, excel, whatever.</p>
-<h2 id="architecture">Architecture</h2>
-<p>application loop
-basic architecture is simple. we have an LLM and a Emacs package. the pass a command from emacs to the model as a prompt. the model responds with Elisp code. the response gets run by the repl. thats the basic application loop.</p>
-<p>training loop
-data
-we have data and it looks like this
-on a low level
-and a high level.</p>
-<p>input model
-i used this model now, but different model might become available.</p>
-<p>training loop
-check the notebook here.</p>
-<p>new model
-results in this new model here. some metadata, location, capabilities</p>
+<p>This allows the human operator to trace and insert control at any step.</p>
+<h3 id="ecosystem">Ecosystem</h3>
+<p>Today in Emacs, for any job-to-be-done that involves text, there is package for it. We can do anything that can be done with text on a computer. This is a testiment to the breadth and depth of possibilities the emacs enables. There are sohpisticated packages for everything. And the AI immidiately has the entirety of emacs&rsquo; capabilities and at its fingertipps, hijacking existing infrastructure.</p>
+<p>Whether you&rsquo;re coding in Python, writing LaTeX documents, or even managing your life through Org-mode, there&rsquo;s likely an Emacs package that&rsquo;s got you covered. This extensive library of functions and packages means that EVA can be trained to assist with virtually any text-related task you can think of, making the possibilities for human-AI collaboration virtually limitless.</p>
+<p>Thats the three reasons why the environment Emacs provides is optimal for colaborative creating with an AI.</p>
+<h2 id="the-ghost-in-my-sh-dot-el">The ghost in my sh.el</h2>
+<p>So, how does EVA leverage Emacs&rsquo; text, runtime, and ecosystem? To answer that in one sentence: You have an ongoing conversation with EVA, in the same space that the execution happens in, using a shared toolset.</p>
+<h3 id="execution">Execution</h3>
+<p>When you call `(eva &ldquo;&rdquo;)`, EVA generates Emacs Lisp code in response that&rsquo;s executed in the REPL, directly affecting the editor&rsquo;s state. She can work directly on the project files and adjust the code as needed. She can read the content of any resource, shell or process within your project to better understand the context. If a specialized task arises, EVA can spawn sub-agents focused on reasoning, planning or solving problems. If she needs clarification, EVA can initiate a chat buffer to ask you directly. When you&rsquo;re debugging a problem, she&rsquo;ll have access to all the same informatinon you do, and then some. You could even call her on a cron job to add some initiative on her end, or to automate routine tasks.</p>
+<h3 id="observability">Observability</h3>
+<p>One point on observability here, which I&rsquo;ll come back to later.
+This immidiacy of writing directly into the editor provides us human users with direct visibility into her reasoning and execution. It keeps feedback loops tight and aligns the model to our intent. We will most likely never be able to look into the model and understand what is going on. But tracing an AI&rsquo;s actions and reasoning in text is well within our abilities.</p>
+<h3 id="ongoing-conversation">Ongoing Conversation</h3>
+<p>So, what&rsquo;s it like to co-create with EVA in real-time? Imagine a workspace where you&rsquo;re not just coding directly but actively conversing with EVA. Who takes on the heavy lifting of execution, allowing you to focus on higher-level thinking and decision-making and design.
+The project you are working on is loaded into Emacs, creating a shared context for both of you. You can monitor her actions in real-time, step in to correct course if she veers off track, or provide additional context when she hits a roadblock.
+It&rsquo;s not just collaboration; it&rsquo;s a dynamic, real-time partnership. It&rsquo;s like pair programming, but your partner is a machine that can think and act.</p>
+<h3 id="immitation">Immitation</h3>
+<p>Let&rsquo;s explore one final thought: Couldn&rsquo;t EVA learn continuously by imitating us? She could if we employ Reinforcement Learning. EVA could predict your subsequent actions, effectively learning from the delta between her prediction and your actual action. This would turn every session with EVA into not just a collaboration but a training ground.</p>
+<p>One a more note taking us squarely into the realm of science fiction. We can pool the changes to the activations which would allow for the continuous collective training of EVA. This isn&rsquo;t just theoretical; a recent paper supports the feasibility of such an approach (paper to be supplied)</p>
+<p>[gif of cyberpunk girls syncing]</p>
+<h2 id="end">End</h2>
+<p>Microsoft will build out Visual Studio Code and Windows, &ldquo;Open&quot;AI has already launched their MVP with the plugins marketplace, and countless startups will join the race.
+However, all of these act as intermediaries, sitting in  the middle, taking control and introducing friction.</p>
+<p>So, what role does friction play and why is it essential?
+AI is still in its early days, and the amounts of compute required are substantial. This means we need to maximize the utility of constrained resources. We need to remove friction for this reason.
+Furthermore, there is a prevailing fear that AI will destroy society. While we are currently at a stage of AI being glorified autocomplete, I see no better way of forcing alignment than keeping feedback cycles small and having complete visibility into the reasoning and execution of the model.
+Additionally, as a creator, I want to have the closest possible relationship with this new tool. To learn its ways, to get a good feeling and a strong intuition for it.
+Lastly, cold hard evolutionary or market dynamics will drive us for optimization. We want to be at our most powerful; I want the power to create.</p>
+<p>As highlighted in the leaked Google memo, open-source is the winning horse in this race.
+After 45 years of existance and continous evolution, Emacs suddenly finds itself in a prime position to be ground zero for a wholy new paradigm of software development. I think we need to come together and build this.</p>
+<p>But this vision can&rsquo;t be realized single-handedly.
+At least I can&rsquo;t do it. My strength is in the vision and the narrative, but I need help with the development of the model and the application and its integration into Emacs. This project would require a large collective effort. I am sure, though, that we can get the infrastructure this requires financed. There is a business case here.</p>
+<p>This will require time, effort, creativity, innovation, problem-solving, financial investment, and much more. Ultimately, it demands what we humans uniquely bring to the table: intent.</p>
 
 </section>
 

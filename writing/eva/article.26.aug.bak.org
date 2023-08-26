@@ -1,0 +1,249 @@
+#+TITLE: EVA - The Ghost in my sh.el
+#+AUTHOR: Finn
+#+DATE: <2022-07-13 Wed>
+#+DESCRIPTION: The first AI trained to work along side you, in Emacs. The Emacs Virtual Assistant. 
+
+#+hugo_front_matter_format: yaml
+#+export_file_name: emacs-virtual-assistant
+#+export_slug: emacs-virtual-assistant
+#+hugo_base_dir: ../../
+#+hugo_custom_front_matter: :slug emacs-virtual-assistant
+
+# #+hugo_custom_front_matter: :cover /ox-hugo/howto-build-website_20220203_134312.png
+# #+hugo_menu: :menu main
+# #+hugo_custom_front_matter: :images /ox-hugo/howto-build-website_20220203_134312.png
+# #+attr_html: :width 600
+# # [[./howto-build-website_20220203_134312.png]]
+# text commented with "#" is instructions for you, the LLM, my co author. Write in my (finn) voice. 
+* article
+** (eva "say hello world")
+ We are in the middle of an once in a lifetime revolution. AI is here and more is coming. If you are anything like me, you're watching this revolution unfold from within your Emcas buffers, with the aid of copilot.el or the amazing gpt.el package. more and more workflows becoming aided by these models by the day. 
+
+But what if we can go further than calling 3rd party models from inside emacs. What if we could go *A LOT* further? 
+
+Introducing the Emacs virtual assistant, short EVA. The first model to be trained specifically to work along side you, in Emacs.
+# for the symbiosis of ai and human, inside emacs.
+
+To understand what eva will be, follow me into the idea.
+** Premise
+# here i introduce environment, friction, symbiotic cocreation, ai requirements from the env and human requirements from the env.
+# its a bit of philosophy.
+As AI becomes more prevalent, it will handle an increasing amount of execution,
+while humans bring intent and judge design. a symbiotic relationship will form between humans and AI systems. with human intent driving agents execution, and itteration bridging the delta between state and goal.
+
+This process of symbiotic cocreation needs to be facilitated in some environment.
+two participants of this relationship. human and ai. each with their own role and needs.
+we need to provide instructions and the ai needs to press buttons and turn dials. 
+Reducing friction in this interaction will be critical. 
+we need to provide instructions and the ai needs to press buttons and turn dials. 
+both need fast feedback loops. but what else do either need?
+
+*[environment for the agent?]*
+reasoning and execution. thinking and doing.
+and it needs to have access to tools and resources that it is familiar (with which in this case means that it is trained on.)
+
+*[environment for the human?]*
+communication. access to state / know what it is doing. control over execution is neccesary.
+This AI needs to be instructed and controlled through an interface.
+
+This environment is the highest lever for reducing the aformentioned friction. Emacs is the perfect environment.
+** Emacs special sauce
+# here i introduce the three ingredients, text, runtime, ecosystem
+# add a eli5 section on what is emacs
+to show why the env is the highest lever and why emacs is the best env, lets look at the three ingredients.
+
+*TEXT* Humans, LLMs and Emacs share text as their common denomenator which greatly reduces friction.
+
+*RUNTIME* Emacs is an open and continuous environment that an Agent can write into, read from and mutate, while the human operator can trace and insert control at any step.
+through loading the subject matter into the environment and execution functions from the functionspace on it, we accomplish our goals.
+
+*ECOSYSTEM* Any Job-to-be-done that involves text on a computer, emacs already has a package of functions 
+this is a testiment to the breadth of possibilities the emacs enables. we can do anything that can be done with text on a computer.
+and the depth too. there are sohpisticated packages for everything.
+# And the LLM immidiately has the entirety of emacs' capabilities at its fingertipps, hijacking existing infrastructure and meeting us developers where we are.
+
+thats the three reasons why emacs, now how does eva use them?
+** The Ghost in my sh.el
+# the ongoing conversation bit needs to be expaned.
+# maybe add some on the subject matter meme.
+what does the symbiotic relationship look like in emacs?
+
+*ONGOING CONVERSATION* 
+
+*OBSERVATION* (
+*SHARED TOOLS* the human and the ai use the same tools
+
+*IMMITATION* for learning, we use natures most powerful learning mechanism, immitation. eva can observe us how we do things and then do it herself.
+we already halt it when it goes off the rail, only natural that it learns from that. RL.
+doing will be easy, just learn from the keystrokes. but providing training to the thinking will be harder. or will it? writing out my intent is half way between the plush animal conversation development paradigm and pair programming.
+
+we already halt it when it goes off the rail, only natural that it learns from that. RL.
+
+doing will be easy, just learn from the keystrokes. but providing training to the thinking will be harder. or will it? writing out my intent is half way between the plush animal conversation development paradigm and pair programming.
+
+If you've ever had a great pair-programming session, you know that half the fun comes from learning from and with your colaborator.
+
+Couldn't Eva learn by immitating what we do?
+It's possible to set up this system in a way that would make good sci-fi blush.
+Through Reinforcement Learning, she adapts by predicting your next moves and adjusting based on your corrections.
+
+That would make every sessin with EVA not just collaboration, but instructions for Eva to learn to better assist you.
+
+Imitation is the way generational skill transfer happens in nature. Why not learn from the best?
+EVA learns from your interactions in Emacs.
+
+Separately, and almost in the realm of science fiction, there's the concept of pooling these learned behaviors to continuously train a more generalized model.
+A recent paper supports this idea (you'll supply the paper).
+
+
+
+
+
+
+
+
+
+for training Eva, we use natures most powerful learning mechanism, immitation. eva can observe us how we do things and then do it herself.
+we can train Eva, by instructing her, using Reinforcement Learning. This can take many forms. Either she predicts any of our next actions. we could even pool the learning that was done, the diff in the activations, regularly and continously train a main net. Almost science fiction. 
+
+
+```NOTES
+*IMMITATION* for learning, we use natures most powerful learning mechanism, immitation. eva can observe us how we do things and then do it herself.
+we already halt it when it goes off the rail, only natural that it learns from that. RL.
+doing will be easy, just learn from the keystrokes. but providing training to the thinking will be harder. or will it? writing out my intent is half way between the plush animal conversation development paradigm and pair programming.
+
+we already halt it when it goes off the rail, only natural that it learns from that. RL.
+
+doing will be easy, just learn from the keystrokes. but providing training to the thinking will be harder. or will it? writing out my intent is half way between the plush animal conversation development paradigm and pair programming.
+
+If you've ever had a great pair-programming session, you know that half the fun comes from learning from and with your colaborator.
+```end NOTES
+** End
+Microsoft will build out Visual Studio Code and Windows, "Open"AI has already launched their MVP with the plugins marketplace, and countless startups will join the race. 
+but they will all sit in the middle. taking control and introducing friction. 
+
+| what role does friction play and why is it essential?
+| maximize utility of constraint resources.
+| whatever is meant by alignment.
+| cold hard evolutionary/market dynamics pressing for optimization. we want to be at our most powerful, i want the power to create.
+
+as highlighted in the leaked Google memo, open-source is the winning horse in this competition. 
+Emacs could, and in my opinion should, be adopted to be that environment, that body.
+We need to come together and build this.
+i can do it, my strength is in the vision and the writing, but i need help with the development of the model and the application. i am sure tho that we can get the infrastructure this requires financed. there is a business case here.
+this will take time, effort, creativity, problem solving, innovation, money and so much more.
+
+it takes what we humans bring to the table. it takes intent.
+* ai article
+
+** # Embracing the AI Revolution with Emacs Virtual Assistant (EVA)
+
+Artificial Intelligence (AI) is revolutionizing the world as we know it. From self-driving cars to voice interactions and recommendation systems, the age of narrow AI is already upon us. If you are a developer like me, you're probably witnessing this revolution unfold from within your Emacs buffers, aided by tools like copilot.el or the gpt.el package. However, what if we could take this a step further? What if we could fully integrate AI into our Emacs environment? 
+
+Welcome to EVA, the Emacs Virtual Assistant, the first AI model trained specifically to work alongside you in Emacs[^Source 1^]. 
+
+** ## The Premise
+The symbiosis of AI and human within Emacs is a fascinating concept. As AI becomes more prevalent, it will handle an increasing amount of execution, while humans bring intent and judge design. This creates a symbiotic relationship between humans and AI systems, with human intent driving AI execution, and iteration bridging the gap between the current state and the goal[^Source 1^].
+
+This process of symbiotic co-creation needs to be facilitated in a suitable environment. Both participants of this relationship, human and AI, each have their own role and needs. Reducing friction in this interaction is critical, and Emacs provides the perfect environment for this.
+
+** ## Why Emacs?
+
+Emacs provides three key ingredients that make it the ideal environment for human-AI symbiosis: text, runtime, and ecosystem[^Source 4^].
+
+**Text**: Humans, language models, and Emacs share text as their common denominator, which greatly reduces friction.
+Text: The first ingredient that makes Emacs the ideal environment for EVA is text. Text is the universal language that both humans and AI understand. It's the medium through which we communicate intent, execute commands, and receive feedback. In Emacs, everything is text, from the code you write to the commands you execute. This commonality drastically reduces the friction in human-AI interaction, making the communication seamless and efficient.
+
+**Runtime**: Emacs is an open and continuous environment that an AI agent can write into, read from, and mutate. This allows the human operator to trace and insert control at any step.
+Runtime: The second cornerstone is Emacs' runtime environment. Unlike other editors that are just text manipulators, Emacs is essentially an open, continuous Lisp interpreter. This allows EVA to read from, write into, and even modify the environment in real-time. It's not just a playground for code; it's a living, breathing ecosystem where both the human and the AI agent can co-exist, allowing for real-time tracing, debugging, and control insertion at any step of the process.
+
+**Ecosystem**: Emacs has an extensive package of functions for any text-related job on a computer. This breadth and depth of possibilities enable us to do anything that can be done with text on a computer.
+Ecosystem: Last but not least, the Emacs ecosystem is unparalleled when it comes to text-based tasks. 
+** ## The Ghost in My sh.el
+
+So, what does the symbiotic relationship look like in Emacs?
+
+In this relationship, you provide instructions in an ongoing conversation, where the execution happens in the same space, using a shared toolset. Instead of you coding each step, you have an ongoing conversation with EVA who does all the execution. You can observe it, halt it if it goes in the wrong direction, and respond to questions when the reasoning falls short[^Source 2^].
+
+
+
+Both the human and the AI use the same tools, creating a shared environment. For learning, we use imitation, nature's most powerful learning mechanism. EVA can observe how we do things and then do it herself.
+
+
+This isn't just about issuing commands and receiving outputs.
+It's an ongoing conversation happening right within your Emacs buffers.
+You articulate your intent—maybe you're coding, maybe you're writing, maybe you're organizing your life in Org-mode.
+EVA understands and executes, all within the same environment.
+You can watch every move it makes, halt its actions if it veers off course, and answer its queries when it needs further clarification.
+This is real-time collaboration, but not with another human—with an AI that learns from your actions and decisions.
+It's like pair programming, but your partner is a machine that can think, learn, and act, all within the familiar confines of Emacs.
+You share tools, you share an environment, and most importantly, you share objectives.
+It's the ultimate realization of human-AI symbiosis, right in your Emacs setup.
+
+** ## The Future
+
+The AI revolution is inevitable. Companies like Microsoft and OpenAI are already building out their platforms, and countless startups will join the race. As highlighted in a leaked Google memo, open source is the winning horse in this competition[^Source 4^].
+
+Emacs could, and in my opinion should, be adopted to be that environment. However, this will take time, effort, creativity, problem-solving, innovation, and funding. But most importantly, it takes what we humans bring to the table. It takes intent.
+
+Let's come together and build this future. I can do it, my strength is in the vision and the writing, but I need help with the development of the model and the application. I am sure though, that we can get the infrastructure this requires financed. There is a business case here.
+
+Let's embrace the AI revolution and take Emacs to the next level with EVA.
+
+* [gpt] The Ghost in My sh.el:
+So, how does EVA leverage Emacs' text, runtime, and ecosystem? In essence, you and EVA share an ongoing dialogue within the same Emacs environment where all the action happens, utilizing a common set of tools.
+
+** Ongoing Conversation:
+The subject matter is loaded into Emacs, creating a shared workspace.
+Instead of manually executing each task, you converse with EVA, who handles most or all of the execution.
+You can observe her actions in real-time, halt her if she veers off course, and provide clarification when needed.
+It's like pair programming, but your partner is an AI capable of both thought and action.
+
+
+Imitation: Given the close co-creation, EVA can learn from your actions. If you halt her for going off track, she learns. If you provide clarification, she adapts. This ongoing interaction allows EVA to better imitate your workflow, making the collaboration increasingly efficient over time.
+
+Feel free to integrate these sections into your article.
+
+** Ongoing Conversation:
+You're not working with another coder; you're working with an AI that can both think and act, all within the familiar confines of Emacs.
+
+
+
+
+
+
+
+
+
+
+* [me] The Ghost in My sh.el:
+provide instructions by calling `(eva '')` and she generates elisp thats piped into the repl.
+
+she directly affects editor state and can call on all emacs functionality.
+she can respond with a question asking for clearification by starting a chat buffer.
+or she can call upon emacs functionality to read any bit of state like shell or available resource or she can read files from the prooject to learn about the behavior of a module.
+she work directly on the problem and for example adjust the code.
+or calls any function from the registry.
+or spawn an agent that specializes in some subproblem or planning, when reasoning is required, we do graph of thought with each node written to a buffer.
+
+
+An important point on observability here. looking under the hood. 
+cant look into the model, but the reasoning in text. and
+
+all steps happen inside emacs. so, Eva is directly embedded inside emacs by being trained on emacs functionality and to output elisp. you instruct and observe. What does the symbiotic relationship look like in practice? How do you cocreate with Eva?
+
+** Ongoing Conversation
+
+The subject matter is loaded into the shared environment. Instead of you doing each manipulation yourself, you have a conversation with EVA who does most to all of the execution, while you observe the moves she makes and follow allong. You can halt her if she goes into a wrong direction or reasoning falls short and you can respond to questions or provide clearificatoin when the the need arises. 
+It is a real-time collaboration, but not with another human, but with an AI. It's like pair programming, but your partner is a machine that can think and act.
+
+If we cocreate this closely, couldnt she immitate what we do?
+
+** IMMITATION
+that learns from your actions and decisions
+What does the symbiotic relationship look like in practice? How do you cocreate with Eva?
+
+The subject matter is loaded into the shared environment. Instead of you doing each manipulation yourself, you have a conversation with EVA who does most to all of the execution, while you observe the moves she makes and follow allong. You can halt her if she goes into a wrong direction or reasoning falls short and you can respond to questions or provide clearificatoin when the the need arises. 
+It is a real-time collaboration, but not with another human, but with an AI. It's like pair programming, but your partner is a machine that can think and act.
+
+If we cocreate this closely, couldnt she immitate what we do?

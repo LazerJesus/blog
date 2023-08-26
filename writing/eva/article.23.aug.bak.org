@@ -1,20 +1,3 @@
-#+TITLE: AI and Emacs
-#+AUTHOR: Finn
-#+DATE: <2022-07-13 Wed>
-#+DESCRIPTION: New year. New website. New journey.
-
-#+hugo_front_matter_format: yaml
-# #+hugo_menu: :menu main
-#+export_file_name: AI-and-Emacs
-#+export_slug: AI-and-Emacs
-#+hugo_base_dir: ../../
-#+hugo_custom_front_matter: :slug ai-and-emacs
-
-# #+hugo_custom_front_matter: :cover /ox-hugo/howto-build-website_20220203_134312.png
-# #+hugo_custom_front_matter: :images /ox-hugo/howto-build-website_20220203_134312.png
-# #+attr_html: :width 600
-# # [[./howto-build-website_20220203_134312.png]]
-# text commented with "#" is instructions for you, the LLM, my co author. Write in my (finn) voice. 
 
 * Intro to the Article
 We are in the middle of an once in a lifetime revolution. AI is here and more is coming. If you are anything like me, you're watching this revolution unfold from within your Emcas buffers and with the aid of copilot.el and the amazing gpt.el package, more and more of your workflows become aided by these models by the day.
