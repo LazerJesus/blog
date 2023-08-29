@@ -8,6 +8,8 @@
 #+export_slug: eva-emacs-virtual-assistant
 #+hugo_base_dir: ../../
 #+hugo_custom_front_matter: :slug eva-emacs-virtual-assistant
+#+hugo_custom_front_matter: :cover /ox-hugo/EVA-1024.jpg
+#+hugo_custom_front_matter: :images /ox-hugo/EVA-1024.jpg
 * (eva "say hello world")
 We are in the middle of a once-in-a-lifetime revolution. AI is here and more is coming. If you're also an Emacs user, you're watching this revolution unfold from within your Emacs buffers, with the aid of packages like copilot.el or the amazing gpt.el. I continuously see more and more of my workflows aided by these models.
 

@@ -5,6 +5,8 @@ description: "The first AI trained to work along side you, in Emacs. The Emacs V
 date: 2022-09-02T00:00:00+02:00
 draft: false
 slug: "eva-emacs-virtual-assistant"
+cover: "/ox-hugo/EVA-1024.jpg"
+images: "/ox-hugo/EVA-1024.jpg"
 ---
 
 ## (eva "say hello world") {#eva-say-hello-world}

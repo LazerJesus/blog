@@ -9,8 +9,8 @@
 #+hugo_base_dir: ../../
 #+hugo_custom_front_matter: :slug emacs-virtual-assistant
 
-# #+hugo_custom_front_matter: :cover /ox-hugo/howto-build-website_20220203_134312.png
 # #+hugo_menu: :menu main
+# #+hugo_custom_front_matter: :cover /ox-hugo/howto-build-website_20220203_134312.png
 # #+hugo_custom_front_matter: :images /ox-hugo/howto-build-website_20220203_134312.png
 # #+attr_html: :width 600
 # # [[./howto-build-website_20220203_134312.png]]
