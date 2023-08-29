@@ -12,7 +12,7 @@
         <pubDate>Fri, 02 Sep 2022 00:00:00 +0200</pubDate>
         
         <guid>https://finnfrotscher.com/posts/eva-emacs-virtual-assistant/</guid>
-        <description>&lt;h2 id=&#34;eva-say-hello-world&#34;&gt;(eva &amp;ldquo;say hello world&amp;rdquo;)&lt;/h2&gt;
+        <description>&lt;img src="https://finnfrotscher.com/ox-hugo/EVA-1024.jpg" alt="Featured image of post EVA - The Ghost in my sh.el" /&gt;&lt;h2 id=&#34;eva-say-hello-world&#34;&gt;(eva &amp;ldquo;say hello world&amp;rdquo;)&lt;/h2&gt;
 &lt;p&gt;We are in the middle of a once-in-a-lifetime revolution. AI is here and more is coming. If you&amp;rsquo;re also an Emacs user, you&amp;rsquo;re watching this revolution unfold from within your Emacs buffers, with the aid of packages like copilot.el or the amazing gpt.el. I continuously see more and more of my workflows aided by these models.&lt;/p&gt;
 &lt;p&gt;But what if we could go further than calling 3rd party stock models. What if we could go &lt;strong&gt;A LOT&lt;/strong&gt; further?&lt;/p&gt;
 &lt;p&gt;Introducing Emacs Virtual Assistant, short EVA. The first AI model intended to work alongside you within Emacs.&lt;/p&gt;
