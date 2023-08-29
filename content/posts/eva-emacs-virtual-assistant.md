@@ -19,9 +19,13 @@ Introducing Emacs Virtual Assistant, short EVA. The first AI model intended to w
 
 <img src="/ox-hugo/EVA-350.jpg" alt="EVA - Emacs Virtual Assistant" />
 
-<figcaption>EVA will take on execution, freeing you to work on a higher order.</figcaption>
+<figcaption>EVA</figcaption>
 
 </figure>
+
+Links:
+[Github](https://github.com/LazerJesus/EVA)
+[Huggingface](https://huggingface.com/LazerJesus/EVA)
 
 To understand what EVA can be, follow me into a short exploration of the idea.
 
@@ -42,6 +46,8 @@ Emacs provides three key ingredients that make it the ideal environment for huma
 ### Text {#text}
 
 Humans, language models, Emacs, and the subject matter we operate on (code, a book, emails, etc.) share _text_ as their common denominator. This greatly reduces friction. In Emacs, everything is controlled entirely through text. Specifically by sending Elisp function calls to the REPL. We load the subject matter of our work as text into emacs and call functions on it. From opening the file viewer to summoning a shell. Every keystroke is a function call. And EVA can call the exact same functions by generating text which is piped into the REPL.
+
+<figure><img src="/ox-hugo/matrix.gif" alt="matrix eva emacs virtual assistant" /></figure>
 
 
 ### Runtime {#runtime}
@@ -67,6 +73,8 @@ Thats the three reasons why the environment Emacs provides is optimal for collab
 
 So, how does EVA leverage Emacs' text, runtime, and ecosystem? To answer that in one sentence: You have an ongoing conversation with EVA, in the same space that the execution happens in, using a shared toolset.
 
+<figure> <img src="/ox-hugo/ghost-in-my-shell.gif" alt="ghost in my shell eva emacs virtual assistant" /> </figure>
+
 
 ### Execution {#execution}
 
@@ -89,9 +97,9 @@ It's not just collaboration; it's a real-time partnership. It's like pair progra
 
 Let's explore one final thought: Couldn't EVA learn continuously by imitating us? She could if we employ Reinforcement Learning. EVA could predict your subsequent actions, effectively learning from the delta between her prediction and your actual action. This would turn every session with EVA into not just a collaboration but training.
 
-<figure max-width="250px">
+<figure>
 
-<img max-width="250px" src="/ox-hugo/blade-runner-hand-sync.gif" alt="Blade Runner 2049 joi mariette hand sync eva emacs virtual assistant" />
+<img src="/ox-hugo/blade-runner-joi-mariette-sync-720.gif" alt="Blade Runner 2049 joi mariette hand sync eva emacs virtual assistant" />
 
 </figure>
 

@@ -17,8 +17,12 @@ Introducing Emacs Virtual Assistant, short EVA. The first AI model intended to w
 
 #+html: <figure align="right">
 #+html: <img src="/ox-hugo/EVA-350.jpg" alt="EVA - Emacs Virtual Assistant" />
-#+html: <figcaption>EVA will take on execution, freeing you to work on a higher order.</figcaption>
+#+html: <figcaption>EVA</figcaption>
 #+html: </figure>
+
+ Links:
+ [[https://github.com/LazerJesus/EVA][Github]]
+ [[https://huggingface.com/LazerJesus/EVA][Huggingface]]
 
 To understand what EVA can be, follow me into a short exploration of the idea.
 
@@ -34,6 +38,7 @@ Emacs provides three key ingredients that make it the ideal environment for huma
 
 ** Text
 Humans, language models, Emacs, and the subject matter we operate on (code, a book, emails, etc.) share /text/ as their common denominator. This greatly reduces friction. In Emacs, everything is controlled entirely through text. Specifically by sending Elisp function calls to the REPL. We load the subject matter of our work as text into emacs and call functions on it. From opening the file viewer to summoning a shell. Every keystroke is a function call. And EVA can call the exact same functions by generating text which is piped into the REPL.
+#+html: <figure><img src="/ox-hugo/matrix.gif" alt="matrix eva emacs virtual assistant" /></figure>
 
 ** Runtime
 Emacs' interactive environment allows EVA and us to inhabit the same space while working. To draw on both a shared toolset in the form of the functions that are defined by Emacs, installed packages, or by us. As well as a shared context in the form of buffers, files, and processes.
@@ -52,6 +57,7 @@ Thats the three reasons why the environment Emacs provides is optimal for collab
 
 * The Ghost in my sh.el
 So, how does EVA leverage Emacs' text, runtime, and ecosystem? To answer that in one sentence: You have an ongoing conversation with EVA, in the same space that the execution happens in, using a shared toolset.
+#+html: <figure> <img src="/ox-hugo/ghost-in-my-shell.gif" alt="ghost in my shell eva emacs virtual assistant" /> </figure>
 
 ** Execution 
 When you call `(eva "")`, EVA generates Emacs Lisp code that's executed in the REPL, directly affecting the editor's state. She can work directly on the project files and adjust the code as needed. She can read the content of any resource, shell, or process within your project to better understand the context. If a specialized task arises, EVA can spawn sub-agents focused on reasoning, planning, or solving problems. If she needs clarification, EVA can initiate a chat buffer to ask you directly. When you're debugging a problem, she'll have access to all the same information you do, and then some. You could even call her on a cron job to add some initiative on her end, or to automate routine tasks.
@@ -68,9 +74,8 @@ It's not just collaboration; it's a real-time partnership. It's like pair progra
 Let's explore one final thought: Couldn't EVA learn continuously by imitating us? She could if we employ Reinforcement Learning. EVA could predict your subsequent actions, effectively learning from the delta between her prediction and your actual action. This would turn every session with EVA into not just a collaboration but training. 
 
 
-#+html: <figure max-width="250px">
-#+html: <img max-width="250px" src="/ox-hugo/blade-runner-hand-sync.gif" alt="Blade Runner 2049 joi mariette hand sync eva emacs virtual assistant" />
-# #+html: <figcaption>EVA will take on execution, freeing you to work on a higher order.</figcaption>
+#+html: <figure>
+#+html: <img src="/ox-hugo/blade-runner-joi-mariette-sync-720.gif" alt="Blade Runner 2049 joi mariette hand sync eva emacs virtual assistant" />
 #+html: </figure>
 
 One more note - taking us squarely into the realm of science fiction. We can pool the changes to the activations which would allow for the continuous collective training of EVA. This isn't just theoretical. A [[https://arxiv.org/abs/2206.01288][recent paper]] supports the feasibility of such an approach. 
