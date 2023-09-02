@@ -114,7 +114,7 @@ Additionally, as a creator, I want to have the closest possible relationship wit
 Lastly, cold hard evolutionary dynamics will drive us to optimize. We want to be and are required to be at our most powerful. I want the power to create.
 
 As highlighted in the [leaked Google memo](https://seminalanalysis.com/p/google-we-have-no-moat-and-neither), open-source is the winning horse in this race.
-After 45 years of existence and continuous evolution, Emacs suddenly finds itself in a prime position to be ground zero for a wholly new paradigm of computation, and maybe, of life. I think we need to come together and build this. Check out the (Github repository)[<https://github.com/LazerJesus/EVA>] for more details.
+After 45 years of existence and continuous evolution, Emacs suddenly finds itself in a prime position to be ground zero for a wholly new paradigm of computation, and maybe, of life. I think we need to come together and build this. Check out the [Github repository](https://github.com/LazerJesus/EVA) for more details.
 
 
 ## Present {#present}
@@ -135,7 +135,6 @@ This will require time, effort, creativity, innovation, problem-solving, money, 
 
 Ultimately, it demands what we humans uniquely bring to the table: intent.
 
-| [Discord](https://discord.gg/9Uxn45ADJs)             |
-|------------------------------------------------------|
-| [Github](https://github.com/lazerjesus/eva)          |
-| [Huggingface](https://huggingface.co/lazerjesus/eva) |
+[Discord](https://discord.gg/9Uxn45ADJs)
+[Github](https://github.com/lazerjesus/eva)
+[Huggingface](https://huggingface.co/lazerjesus/eva)
