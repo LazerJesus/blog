@@ -67,8 +67,8 @@ Additionally, as a creator, I want to have the closest possible relationship wit
 Lastly, cold hard evolutionary dynamics will drive us to optimize. We want to be and are required to be at our most powerful. I want the power to create.&lt;/p&gt;
 &lt;p&gt;As highlighted in the &lt;a class=&#34;link&#34; href=&#34;https://seminalanalysis.com/p/google-we-have-no-moat-and-neither&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;leaked Google memo&lt;/a&gt;, open-source is the winning horse in this race.
-After 45 years of existence and continuous evolution, Emacs suddenly finds itself in a prime position to be ground zero for a wholly new paradigm of computation, and maybe, of life. I think we need to come together and build this. Check out the (Github repository)[&lt;a class=&#34;link&#34; href=&#34;https://github.com/LazerJesus/EVA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/LazerJesus/EVA&lt;/a&gt;] for more details.&lt;/p&gt;
+After 45 years of existence and continuous evolution, Emacs suddenly finds itself in a prime position to be ground zero for a wholly new paradigm of computation, and maybe, of life. I think we need to come together and build this. Check out the &lt;a class=&#34;link&#34; href=&#34;https://github.com/LazerJesus/EVA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Github repository&lt;/a&gt; for more details.&lt;/p&gt;
 &lt;h2 id=&#34;present&#34;&gt;Present&lt;/h2&gt;
 &lt;p&gt;But this vision can&amp;rsquo;t be realized single-handedly.
 At least I can&amp;rsquo;t do it. My strengths are in the vision and the narrative, but I need help with the development of the model and the application and its integration into Emacs. This project will require a collective effort. I am sure, though, that we can work out favorable economics. There is enough of a business case here to finance the required infrastructure. Because not everyone can or wants to run inference at home, there is a potential to build a AI-as-a-service company here.&lt;/p&gt;
@@ -80,24 +80,12 @@ A few things I&amp;rsquo;ve learned from the experience are that we&amp;rsquo;ll
 &lt;p&gt;In summary, we are a long way away from the ultimate vision I&amp;rsquo;ve laid out above. But that is OK. Rome wasn&amp;rsquo;t built in a day and neither was Emacs. If I am right, EVA will one day be as significant to Emacs as org-mode.&lt;/p&gt;
 &lt;p&gt;This will require time, effort, creativity, innovation, problem-solving, money, and much much more.&lt;/p&gt;
 &lt;p&gt;Ultimately, it demands what we humans uniquely bring to the table: intent.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;a class=&#34;link&#34; href=&#34;https://discord.gg/9Uxn45ADJs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Discord&lt;/a&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/lazerjesus/eva&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Github&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://huggingface.co/lazerjesus/eva&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Huggingface&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://discord.gg/9Uxn45ADJs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Discord&lt;/a&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://github.com/lazerjesus/eva&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Github&lt;/a&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://huggingface.co/lazerjesus/eva&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Huggingface&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         
