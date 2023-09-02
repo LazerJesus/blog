@@ -22,7 +22,7 @@ Introducing Emacs Virtual Assistant, short EVA. The first AI model intended to w
 #+html: <figcaption>EVA</figcaption>
 #+html: </figure>
 
-[[https://github.com/LazerJesus/EVA][Github]] | [[https://huggingface.co/LazerJesus/EVA][Huggingface]]
+[[https://discord.gg/9Uxn45ADJs][Discord]] | [[https://github.com/lazerjesus/eva][Github]] | [[https://huggingface.co/lazerjesus/eva][Huggingface]]
 
 To understand what EVA can be, follow me into a short exploration of the idea.
 
@@ -106,6 +106,4 @@ This will require time, effort, creativity, innovation, problem-solving, money, 
 
 Ultimately, it demands what we humans uniquely bring to the table: intent.
 
-[[https://discord.gg/9Uxn45ADJs][Discord]]
-[[https://github.com/lazerjesus/eva][Github]]
-[[https://huggingface.co/lazerjesus/eva][Huggingface]]
+[[https://discord.gg/9Uxn45ADJs][Discord]] | [[https://github.com/lazerjesus/eva][Github]] | [[https://huggingface.co/lazerjesus/eva][Huggingface]]
