@@ -293,6 +293,7 @@
         </li>
         <li><a href="#future">Future</a></li>
         <li><a href="#present">Present</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
       </ol>
     </li>
   </ol>
@@ -388,33 +389,32 @@
 <figcaption>EVA</figcaption>
 </figure>
 <p><a class="link" href="https://github.com/LazerJesus/EVA"  target="_blank" rel="noopener"
-    >Github</a>
-<a class="link" href="https://huggingface.co/LazerJesus/EVA"  target="_blank" rel="noopener"
+    >Github</a> | <a class="link" href="https://huggingface.co/LazerJesus/EVA"  target="_blank" rel="noopener"
     >Huggingface</a></p>
 <p>To understand what EVA can be, follow me into a short exploration of the idea.</p>
 <h2 id="premise">Premise</h2>
-<p>As AI becomes more prevalent and capable, it will handle an increasing amount of execution. Leaving us humans to drive intent and to judge design. A symbiotic relationship will form between humans and AI systems. Human intent will drive agent execution. The delta between state and goal getting bridged by collaborative iteration.</p>
-<p>This process of co-creation needs to be facilitated in a suitable environment. Both participants of this relationship, human and AI, each have their own roles and needs. The AI needs methods for reasoning through instructions and problems, and tools at its disposal to do the actual implementation. And we need to access and have control over the reasoning and execution. To judge valence, provide feedback, and steer.
+<p>As AI becomes more prevalent and capable, it will handle an increasing amount of execution. Leaving us humans to drive intent and to judge design. A symbiotic relationship will form between humans and AI systems. Human intent will drive agent execution.</p>
+<p>This process of co-creation needs to be facilitated in a suitable environment. Both participants of this relationship, human and AI, have their own roles and needs. The AI needs methods for reasoning through instructions and problems, and tools at its disposal to do the actual implementation. And we need to access to the reasoning and execution. To judge valence, provide feedback, and steer.
 Reducing friction in this interaction will be critical, requiring fast feedback loops. And Emacs provides the perfect environment for this.</p>
 <h2 id="emacs-special-sauce">Emacs special sauce</h2>
 <p>Emacs provides three key ingredients that make it the ideal environment for human-AI symbiosis. It is entirely text-based, is based on an interactive runtime, and has a massive ecosystem.</p>
 <h3 id="text">Text</h3>
-<p>Humans, language models, Emacs, and the subject matter we operate on (code, a book, emails, etc.) share <em>text</em> as their common denominator. This greatly reduces friction. In Emacs, everything is controlled entirely through text. Specifically by sending Elisp function calls to the REPL. We load the subject matter of our work as text into emacs and call functions on it. From opening the file viewer to summoning a shell. Every keystroke is a function call. And EVA can call the exact same functions by generating text which is piped into the REPL.</p>
+<p>Language models, Emacs, Humans, and the subject matter we operate on (code, org-mode, webpages, emails, etc.) share <em>text</em> as their common denominator. This greatly reduces friction. In Emacs, everything is controlled entirely through text. Specifically by sending Elisp function calls to the Emacs interpreter. We load the subject matter of our work, as text, into emacs and call functions on it. From opening the file viewer to summoning a shell, every keystroke is a function call. And EVA can call the exact same functions by generating text which is piped into the interpreter, thus controlling Emacs the same way we do.</p>
 <figure><img src="/ox-hugo/matrix.gif" alt="matrix eva emacs virtual assistant" /></figure>
 <h3 id="runtime">Runtime</h3>
-<p>Emacs&rsquo; interactive environment allows EVA and us to inhabit the same space while working. To draw on both a shared toolset in the form of the functions that are defined by Emacs, installed packages, or by us. As well as a shared context in the form of buffers, files, and processes.</p>
-<p>We load the subject matter into the context and call functions on it to interactively bridge the gap between state and goal. From the AIs perspective, Emacs is essentially a REPL with an editor, an application platform, and an operating system built in. All of which can be read and controlled entirely through text-based instructions.
-This fundamentally sets Emacs apart from other editors, that are pure point-and-click text manipulators. Their instruction set is either not accessible or non-existent.</p>
+<p>Emacs&rsquo; interactive environment allows EVA and us to inhabit the same space while working. To draw on a shared toolset in the form of the functions that are defined by Emacs, installed packages, or by us. As well as a shared context in the form of buffers, files, and processes.</p>
+<p>We load the subject matter into the context and call functions on it to interactively bridge the gap between state and goal. From the AIs perspective, Emacs is essentially an interpreter with an editor, an application platform, and an operating system built in. All of which can be read and controlled entirely through uniform text-based instructions.
+This fundamentally sets Emacs apart from other editors, that are pure point-and-click text manipulators. Their instruction set is either not accessible or non-existent. It also sets Emacs apart form a Python or Jupyter based environment, which doesn&rsquo;t provide the combination of shared, interactive runtime and text-based instruction set.</p>
 <p>Emacs is a living, breathing ecosystem that both the human and the AI agent can co-exist in simultaneously. That is a very powerful paradigm for co-creation with an AI.</p>
 <h3 id="ecosystem">Ecosystem</h3>
-<p>We can do anything that can be done with text on a computer. For any job to be done that involves text, there is a package for it. This is a testament to the breadth and depth of possibilities the Emacs enables. And EVA immediately has the entirety of these capabilities at its fingertips. To steal a Ben Thompson phrase, Eva is hijacking existing infrastructure.</p>
+<p>With Emacs, we can do anything that can be done with text on a computer. For any job to be done that involves text, there is a package for it. This is a testament to the breadth and depth of possibilities the Emacs enables. And EVA immediately has the entirety of these capabilities at its fingertips. To steal a Ben Thompson phrase, Eva is hijacking existing infrastructure.</p>
 <p>Whether you&rsquo;re coding in Python, writing LaTeX documents, or managing your life through Org-mode, there&rsquo;s likely an Emacs package that&rsquo;s got you covered. The inexhaustible library of functions and packages means that EVA can be trained to assist with virtually any text-related task you can think of.</p>
-<p>Thats the three reasons why the environment Emacs provides is optimal for collaborative creating with an AI.</p>
+<p>Thats the three reasons why the environment Emacs provides is optimal for collaborative creating with an AI. Text, runtime and ecosystem.</p>
 <h2 id="the-ghost-in-my-sh-dot-el">The Ghost in my sh.el</h2>
 <p>So, how does EVA leverage Emacs&rsquo; text, runtime, and ecosystem? To answer that in one sentence: You have an ongoing conversation with EVA, in the same space that the execution happens in, using a shared toolset.</p>
 <figure> <img src="/ox-hugo/ghost-in-my-shell.gif" alt="ghost in my shell eva emacs virtual assistant" /> </figure>
 <h3 id="execution">Execution</h3>
-<p>When you call `(eva &ldquo;&rdquo;)`, EVA generates Emacs Lisp code that&rsquo;s executed in the REPL, directly affecting the editor&rsquo;s state. She can work directly on the project files and adjust the code as needed. She can read the content of any resource, shell, or process within your project to better understand the context. If a specialized task arises, EVA can spawn sub-agents focused on reasoning, planning, or solving problems. If she needs clarification, EVA can initiate a chat buffer to ask you directly. When you&rsquo;re debugging a problem, she&rsquo;ll have access to all the same information you do, and then some. You could even call her on a cron job to add some initiative on her end, or to automate routine tasks.</p>
+<p>When you call `(eva &ldquo;&rdquo;)`, EVA generates Emacs Lisp code that&rsquo;s executed by the Emacs interpreter, directly affecting the editor&rsquo;s state. She can work directly on the project files and adjust the code as needed. She can read the content of any resource, shell, or process within your project to better understand the context. If a specialized task arises, EVA can spawn sub-agents focused on reasoning, planning, or solving problems. If she needs clarification, EVA can initiate a chat buffer to ask you directly. When you&rsquo;re debugging a problem, she&rsquo;ll have access to all the same information you do, and then some. You could even call her on a cron job to add some initiative on her end, or to automate routine tasks.</p>
 <h3 id="observability">Observability</h3>
 <p>One point on observability here, which I&rsquo;ll come back to later. This immediacy of writing directly into the editor provides us, human users, with direct visibility into her reasoning and execution. It keeps feedback loops tight and aligns the model to our intent. We will most likely never be able to look into a model and understand what is going on. But tracing an AI&rsquo;s actions and reasoning in the text is well within our abilities.</p>
 <h3 id="ongoing-conversation">Ongoing Conversation</h3>
@@ -422,35 +422,50 @@ This fundamentally sets Emacs apart from other editors, that are pure point-and-
 The project you are working on is loaded into Emacs, creating a shared context for both of you. You can monitor her actions in real time, step in to correct course if she veers off track, or provide additional context when she hits a roadblock.
 It&rsquo;s not just collaboration; it&rsquo;s a real-time partnership. It&rsquo;s like pair programming, but your partner is a machine that can think and act.</p>
 <h3 id="imitation">Imitation</h3>
-<p>Let&rsquo;s explore one final thought: Couldn&rsquo;t EVA learn continuously by imitating us? She could if we employ Reinforcement Learning. EVA could predict your subsequent actions, effectively learning from the delta between her prediction and your actual action. This would turn every session with EVA into not just a collaboration but training.</p>
+<p>Let me present one final thought: If we employ Reinforcement Learning, EVA can learn by imitating us. EVA could predict our subsequent actions, effectively learning from the delta between her prediction and our actual action. This would turn every session with EVA into not just a collaboration but training.</p>
 <figure>
 <img src="/ox-hugo/blade-runner-joi-mariette-sync-720.gif" alt="Blade Runner 2049 joi mariette hand sync eva emacs virtual assistant" />
 </figure>
-<p>One more note - taking us squarely into the realm of science fiction. We can pool the changes to the activations which would allow for the continuous collective training of EVA. This isn&rsquo;t just theoretical. A <a class="link" href="https://arxiv.org/abs/2206.01288"  target="_blank" rel="noopener"
-    >recent paper</a> supports the feasibility of such an approach.</p>
 <h2 id="future">Future</h2>
 <p>Microsoft will build out Visual Studio Code and Windows, &ldquo;Open&quot;AI have launched their MVP with the plugins marketplace, and countless startups will join the race.
 However, all of these act as intermediaries, sitting in the middle, taking control and introducing friction.</p>
 <p>AI is still in its early days, and the amounts of compute required are substantial. This means we need to maximize the utility of constrained resources. We need to remove friction for this reason.
 Another reason is that there is a prevailing fear that AI will destroy society. While we are at a stage of AI being glorified autocomplete, I currently see no better way of forcing alignment than keeping feedback cycles small and having complete visibility into the reasoning and execution of the model.
 Additionally, as a creator, I want to have the closest possible relationship with this new tool. To learn its ways and to get a strong intuition for it.
-Lastly, cold hard evolutionary or market dynamics will drive us to optimize. We want to be and are required to be at our most powerful. I want the power to create.</p>
+Lastly, cold hard evolutionary dynamics will drive us to optimize. We want to be and are required to be at our most powerful. I want the power to create.</p>
 <p>As highlighted in the <a class="link" href="https://seminalanalysis.com/p/google-we-have-no-moat-and-neither"  target="_blank" rel="noopener"
     >leaked Google memo</a>, open-source is the winning horse in this race.
-After 45 years of existence and continuous evolution, Emacs suddenly finds itself in a prime position to be ground zero for a wholly new paradigm of software development, and frankly, of thinking. I think we need to come together and build this.</p>
+After 45 years of existence and continuous evolution, Emacs suddenly finds itself in a prime position to be ground zero for a wholly new paradigm of computation, and maybe, of life. I think we need to come together and build this. Check out the (Github repository)[<a class="link" href="https://github.com/LazerJesus/EVA"  target="_blank" rel="noopener"
+    >https://github.com/LazerJesus/EVA</a>] for more details.</p>
 <h2 id="present">Present</h2>
 <p>But this vision can&rsquo;t be realized single-handedly.
-At least I can&rsquo;t do it. My strengths are in the vision and the narrative, but I need help with the development of the model and the application and its integration into Emacs. This project will require a collective effort. I am sure, though, that we can work out favorable economics. There is enough of a business case here to finance the required infrastructure because not everyone can or wants to run inference at home.</p>
-<p>Let me end on a quick overview of the status quo of EVA. I have worked out a proof of concept of the overall system. There is a model, accessible through an endpoint, callable from an Elisp package. There is a dataset of text instructions and their corresponding Elisp snippets. I&rsquo;ve tried different models and finetuned starchat 16b, stablecode 3b, and codellama 7b, 13b and 34b, all with similar results. Codellama seems to me the best choice for a foundation model in the short term, due to my expectation that it&rsquo;ll receive the largest amount of community attention. What do you think? There is a notebook for finetuning, and a flask server to host an /inference endpoint if you want to host it yourself. There is an Elisp package that calls the endpoint and pipes the response into the REPL.
-But. The data is quite low quality though and was just meant to demonstrate the system architecture.
-A few things I&rsquo;ve learned from the experience are that we&rsquo;ll need high-quality data, that each individual row is quite straightforward and fun to create, but that we need A LOT of those rows. Check out the <a class="link" href="https://github.com/lazerjesus/eva#contributing"  target="_blank" rel="noopener"
-    >contribution guide</a> for more information. In summary, we are a long way away from the ultimate vision I&rsquo;ve laid out above. But that is OK. Rome wasn&rsquo;t built in a day and neither was Emacs. If I am right, EVA will one day be as significant to Emacs as org-mode.</p>
+At least I can&rsquo;t do it. My strengths are in the vision and the narrative, but I need help with the development of the model and the application and its integration into Emacs. This project will require a collective effort. I am sure, though, that we can work out favorable economics. There is enough of a business case here to finance the required infrastructure. Because not everyone can or wants to run inference at home, there is a potential to build a AI-as-a-service company here.</p>
+<p>Let me end on a quick overview of the status quo of EVA. I have worked out a proof of concept of the overall system. There is a model, accessible through an endpoint, callable from an Elisp package. There is a dataset of text instructions and their corresponding Elisp snippets. I&rsquo;ve tried different models and finetuned starchat 16b, stablecode 3b, and codellama 7b, 13b and 34b, all with similar results. Codellama seems to me the best choice for a foundation model in the short term, due to my expectation that it&rsquo;ll receive the largest amount of community attention. What do you think? There is a notebook for finetuning, and a flask server to host an /inference endpoint if you want to host it yourself. There is an Elisp package that calls the endpoint and pipes the response into the Emacs interpreter.
+But. The data is quite low quality and was meant to demonstrate the system architecture.
+A few things I&rsquo;ve learned from the experience are that we&rsquo;ll need high-quality data, that each individual row is quite straightforward and fun to create, but that we need A LOT of those rows. Check out the <a class="link" href="https://github.com/LazerJesus/EVA#contribution"  target="_blank" rel="noopener"
+    >contribution guide</a> for more information.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In summary, we are a long way away from the ultimate vision I&rsquo;ve laid out above. But that is OK. Rome wasn&rsquo;t built in a day and neither was Emacs. If I am right, EVA will one day be as significant to Emacs as org-mode.</p>
 <p>This will require time, effort, creativity, innovation, problem-solving, money, and much much more.</p>
 <p>Ultimately, it demands what we humans uniquely bring to the table: intent.</p>
-<p><a class="link" href="https://github.com/LazerJesus/EVA"  target="_blank" rel="noopener"
-    >Github</a>
-<a class="link" href="https://huggingface.co/LazerJesus/EVA"  target="_blank" rel="noopener"
-    >Huggingface</a></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th><a class="link" href="https://discord.gg/9Uxn45ADJs"  target="_blank" rel="noopener"
+    >Discord</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="link" href="https://github.com/lazerjesus/eva"  target="_blank" rel="noopener"
+    >Github</a></td>
+</tr>
+<tr>
+<td><a class="link" href="https://huggingface.co/lazerjesus/eva"  target="_blank" rel="noopener"
+    >Huggingface</a></td>
+</tr>
+</tbody>
+</table></div>
 
 </section>
 
